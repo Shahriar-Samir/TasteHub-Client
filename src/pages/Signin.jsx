@@ -1,9 +1,12 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Typewriter } from 'react-simple-typewriter'
+import { AuthContext } from '../providers/AuthProvider';
 
 
 const Signin = () => {
+    const {signIn} = useContext(AuthContext)
+
     useEffect(()=>{
         document.querySelector('html').setAttribute('data-theme','light')
     },[])    
@@ -13,7 +16,9 @@ const Signin = () => {
         const form = e.target
         const email = form.email.value
         const password = form.password.value
-        console.log(email, password)
+        signIn(email,password)
+        .then(res=> console.log(res.user))
+        .catch(err=> console.log(err))
     }
 
     return (
