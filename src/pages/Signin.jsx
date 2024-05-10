@@ -2,6 +2,7 @@ import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Typewriter } from 'react-simple-typewriter'
 import { AuthContext } from '../providers/AuthProvider';
+import { toast, ToastContainer } from 'react-toastify';
 
 
 const Signin = () => {
@@ -16,12 +17,26 @@ const Signin = () => {
         const form = e.target
         const email = form.email.value
         const password = form.password.value
-        signIn(email,password)
-        .then(res=> console.log(res.user))
-        .catch(err=> console.log(err))
+        if(password.length < 6 || /[A-Z]/.test(password) === false || /[a-z]/.test(password) === false){
+            toast.error('Password must have an uppercase and lowercase letter with at least 6 characters')
+        }
+        else{
+            signIn(email,password)
+        .then(()=> toast.success('Logged in successfully'))
+        .catch(err=>{
+            if(err.message==='Firebase: Error (auth/invalid-credential).'){
+                toast.error('Incorrect email or password')
+            }
+            else{
+                toast.error('Something went wrong')
+            }
+        })
+        }
     }
 
     return (
+        <>
+        <ToastContainer/>
         <div className="h-[100vh] w-full  bg-[linear-gradient(to_top,rgba(0,0,0,0.4),rgba(0,0,0,0)),linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0)),url('/images/loginBanner.jpg')] bg-no-repeat bg-cover flex justify-center items-center gap-10">
                 <div className='md:w-1/3 flex justify-center items-center'>
 <form className="w-11/12 max-w-[300px] mt-20" onSubmit={submit}>
@@ -47,6 +62,7 @@ const Signin = () => {
                         </div>
                 </div>
         </div>
+        </>
     );
 };
 

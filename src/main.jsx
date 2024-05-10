@@ -7,6 +7,7 @@ import Home from './pages/Home.jsx'
 import Resgister from './pages/Resgister.jsx'
 import Signin from './pages/Signin.jsx'
 import AuthProvider from './providers/AuthProvider.jsx'
+import 'react-toastify/dist/ReactToastify.css'
 
 const router = createBrowserRouter([{
       path:'/',
