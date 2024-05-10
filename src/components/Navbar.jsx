@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
-    <div className='py-2'>
+    <div className='py-2 fixed top-0 w-full'>
       <div className='md:flex justify-between items-center hidden px-2'>
         <div></div>
         <div className='flex items-center flex-col  ms-20'>
@@ -15,7 +15,7 @@ const Navbar = () => {
       <Link to='/signin' className="btn">Sign In</Link>
       </div>
       </div>
-     <div className="navbar bg-base-100 p-0">
+     <div className="navbar p-0 m-0 min-h-fit ">
   <div className="navbar-start ">
     <div className="dropdown md:hidden">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
