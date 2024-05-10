@@ -5,7 +5,7 @@ import { AuthContext } from '../providers/AuthProvider';
 import { toast, ToastContainer } from 'react-toastify';
 import { FcGoogle } from "react-icons/fc";
 import { GrFacebookOption } from "react-icons/gr";
-import { FaSquareXTwitter } from "react-icons/fa6";
+
 
 
 const Signin = () => {
@@ -34,6 +34,7 @@ const Signin = () => {
             toast.error('Something went wrong')
         })
     }
+
 
     function submit(e){
         e.preventDefault()
@@ -67,7 +68,6 @@ const Signin = () => {
     <div className='flex justify-center gap-10 items-center'>
         <FcGoogle className='text-2xl' role='button' onClick={signInWithGoogleAccount}/>
         <GrFacebookOption className='text-2xl text-[#0866FF] bg-white' role='button' onClick={signInWithFacebookAccount}/>
-        <FaSquareXTwitter  className='text-2xl' role='button'/>
     </div>
     <div className="flex justify-center items-center gap-3 mt-2">
         <div className='h-[1px] bg-white w-full'>

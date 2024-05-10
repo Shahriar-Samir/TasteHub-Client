@@ -1,5 +1,5 @@
 import React, { createContext } from 'react';
-import {createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth'
+import {createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, TwitterAuthProvider, updateProfile } from 'firebase/auth'
 import app from '../firebase/firebase';
 
 
