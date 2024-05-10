@@ -8,9 +8,9 @@ const Signin = () => {
         document.querySelector('html').setAttribute('data-theme','light')
     },[])    
     return (
-        <div className="h-[100vh] w-full  bg-[linear-gradient(to_top,rgba(0,0,0,0.4),rgba(0,0,0,0)),linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0)),url('/images/loginBanner.jpg')] bg-no-repeat bg-cover flex justify-center items-center ">
+        <div className="h-[100vh] w-full  bg-[linear-gradient(to_top,rgba(0,0,0,0.4),rgba(0,0,0,0)),linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0)),url('/images/loginBanner.jpg')] bg-no-repeat bg-cover flex justify-center items-center gap-10">
                 <div className='md:w-1/3 flex justify-center items-center'>
-<form className="w-11/12 max-w-[300px]">
+<form className="w-11/12 max-w-[300px] mt-20">
     <h1 className='text-3xl mb-5 font-bold text-center'>Sign In</h1>
   <div className="mb-5 w-full ">
     <label htmlFor="email" className="block mb-2 text-sm font-medium text-white ">Your email</label>
@@ -22,13 +22,13 @@ const Signin = () => {
   </div>
  
   <button type="submit" className="w-full text-white bg-[#C90B12] hover:bg-[#8e282b] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign In</button>
-  <p className='mt-4 text-sm'>Don't have an account? <Link to='/signup' className='font-bold hover:underline'>Create a new account</Link></p>
+  <p className='mt-4 text-sm text-center'>Don't have an account? <Link to='/signup' className='font-bold hover:underline'>Create a new account</Link></p>
 </form>
 
                 </div>
                 <div className="flex flex-col">
                         <div className='flex flex-col gap-4 md:'>
-                        <h1 className='text-6xl font-bold max-w-[600px] text-center'><Typewriter words={['Welcome back to TasteHub!']} typeSpeed={50}  cursor={true} cursorStyle={'_'}/></h1>
+                        <h1 className='text-6xl font-bold max-w-[600px] text-center mt-20'><Typewriter words={['Welcome back to TasteHub!']} typeSpeed={50}  cursor={true} cursorStyle={'_'}/></h1>
                             <p className='text-center w-11/12 max-w-[600px]'>Embark on a personalized culinary journey with TasteHub. Sign in to manage your food inventory, explore new recipes, and track your orders seamlessly. From adding your favorite dishes to discovering new flavors, your profile is your gateway to a world of culinary delight</p>
                         </div>
                 </div>
