@@ -6,6 +6,7 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import Home from './pages/Home.jsx'
 import Resgister from './pages/Resgister.jsx'
 import Signin from './pages/Signin.jsx'
+import AuthProvider from './providers/AuthProvider.jsx'
 
 const router = createBrowserRouter([{
       path:'/',
@@ -27,7 +28,10 @@ const router = createBrowserRouter([{
 }])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <RouterProvider router={router}/>
+    <React.StrictMode>
+        <AuthProvider>
+          <RouterProvider router={router}/>
+        </AuthProvider>
   </React.StrictMode>,
+
 )

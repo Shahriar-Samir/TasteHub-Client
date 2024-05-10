@@ -7,18 +7,27 @@ const Signin = () => {
     useEffect(()=>{
         document.querySelector('html').setAttribute('data-theme','light')
     },[])    
+
+    function submit(e){
+        e.preventDefault()
+        const form = e.target
+        const email = form.email.value
+        const password = form.password.value
+        console.log(email, password)
+    }
+
     return (
         <div className="h-[100vh] w-full  bg-[linear-gradient(to_top,rgba(0,0,0,0.4),rgba(0,0,0,0)),linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0)),url('/images/loginBanner.jpg')] bg-no-repeat bg-cover flex justify-center items-center gap-10">
                 <div className='md:w-1/3 flex justify-center items-center'>
-<form className="w-11/12 max-w-[300px] mt-20">
+<form className="w-11/12 max-w-[300px] mt-20" onSubmit={submit}>
     <h1 className='text-3xl mb-5 font-bold text-center'>Sign In</h1>
   <div className="mb-5 w-full ">
     <label htmlFor="email" className="block mb-2 text-sm font-medium text-white ">Your email</label>
-    <input type="email" id="email" className="shadow-sm bg-[white] text-black  text-sm rounded-lg w-full p-2.5" placeholder="Enter your email" required />
+    <input type="email" id="email" name='email' className="shadow-sm bg-[white] text-black  text-sm rounded-lg w-full p-2.5" placeholder="Enter your email" required />
   </div>
   <div className="mb-5">
     <label htmlFor="password" className="block mb-2 text-sm font-medium text-white ">Your password</label>
-    <input type="password" id="password" className="shadow-sm bg-[white] text-black  text-sm rounded-lg w-full p-2.5   " placeholder="Enter your password" required />
+    <input type="password" id="password" name='password' className="shadow-sm bg-[white] text-black  text-sm rounded-lg w-full p-2.5   " placeholder="Enter your password" required />
   </div>
  
   <button type="submit" className="w-full text-white bg-[#C90B12] hover:bg-[#8e282b] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign In</button>
