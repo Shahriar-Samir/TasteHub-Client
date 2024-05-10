@@ -9,7 +9,7 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 
 
 const Signin = () => {
-    const {signIn,signInWithGoogle} = useContext(AuthContext)
+    const {signIn,signInWithGoogle,signInWithFacebook} = useContext(AuthContext)
 
     useEffect(()=>{
         document.querySelector('html').setAttribute('data-theme','light')
@@ -17,6 +17,16 @@ const Signin = () => {
 
     const signInWithGoogleAccount = ()=>{
         signInWithGoogle()
+        .then(()=>{
+            toast.success('Logged in successfully')
+        })
+        .catch(()=>{
+            toast.error('Something went wrong')
+        })
+    }
+
+    const signInWithFacebookAccount = ()=>{
+        signInWithFacebook()
         .then(()=>{
             toast.success('Logged in successfully')
         })
@@ -56,7 +66,7 @@ const Signin = () => {
     <h1 className='text-3xl mb-5 font-bold text-center'>Sign In With</h1>
     <div className='flex justify-center gap-10 items-center'>
         <FcGoogle className='text-2xl' role='button' onClick={signInWithGoogleAccount}/>
-        <GrFacebookOption className='text-2xl text-[#0866FF] bg-white' role='button'/>
+        <GrFacebookOption className='text-2xl text-[#0866FF] bg-white' role='button' onClick={signInWithFacebookAccount}/>
         <FaSquareXTwitter  className='text-2xl' role='button'/>
     </div>
     <div className="flex justify-center items-center gap-3 mt-2">
