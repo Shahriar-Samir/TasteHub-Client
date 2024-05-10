@@ -26,14 +26,17 @@ const Register = () => {
             signUp(email,password)
             .then(()=>{
                 updateUser({displayName:name, photoURL: photo})
-                .then(res=>{
-                    console.log(res)
+                .then(()=>{
                     toast.success('Account created successfully')
                 })
             })
             .catch(err=>{
-                console.log(err)
-                toast.error('Something went wrong')
+                if(err.message === 'Firebase: Error (auth/email-already-in-use).'){
+                    toast.error('Email already in use')            
+                }
+                else{
+                    toast.error('Something went wrong')
+                }
             })
         }
     }

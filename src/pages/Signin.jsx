@@ -3,14 +3,27 @@ import { Link } from 'react-router-dom';
 import { Typewriter } from 'react-simple-typewriter'
 import { AuthContext } from '../providers/AuthProvider';
 import { toast, ToastContainer } from 'react-toastify';
+import { FcGoogle } from "react-icons/fc";
+import { GrFacebookOption } from "react-icons/gr";
+import { FaSquareXTwitter } from "react-icons/fa6";
 
 
 const Signin = () => {
-    const {signIn} = useContext(AuthContext)
+    const {signIn,signInWithGoogle} = useContext(AuthContext)
 
     useEffect(()=>{
         document.querySelector('html').setAttribute('data-theme','light')
     },[])    
+
+    const signInWithGoogleAccount = ()=>{
+        signInWithGoogle()
+        .then(()=>{
+            toast.success('Logged in successfully')
+        })
+        .catch(()=>{
+            toast.error('Something went wrong')
+        })
+    }
 
     function submit(e){
         e.preventDefault()
@@ -40,8 +53,20 @@ const Signin = () => {
         <div className="h-[100vh] w-full  bg-[linear-gradient(to_top,rgba(0,0,0,0.4),rgba(0,0,0,0)),linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0)),url('/images/loginBanner.jpg')] bg-no-repeat bg-cover flex justify-center items-center gap-10">
                 <div className='md:w-1/3 flex justify-center items-center'>
 <form className="w-11/12 max-w-[300px] mt-20" onSubmit={submit}>
-    <h1 className='text-3xl mb-5 font-bold text-center'>Sign In</h1>
-  <div className="mb-5 w-full ">
+    <h1 className='text-3xl mb-5 font-bold text-center'>Sign In With</h1>
+    <div className='flex justify-center gap-10 items-center'>
+        <FcGoogle className='text-2xl' role='button' onClick={signInWithGoogleAccount}/>
+        <GrFacebookOption className='text-2xl text-[#0866FF] bg-white' role='button'/>
+        <FaSquareXTwitter  className='text-2xl' role='button'/>
+    </div>
+    <div className="flex justify-center items-center gap-3 mt-2">
+        <div className='h-[1px] bg-white w-full'>
+            </div>
+        Or
+        <div className='h-[1px] bg-white w-full'>
+            </div>
+        </div>
+  <div className="mb-5 w-full mt-2">
     <label htmlFor="email" className="block mb-2 text-sm font-medium text-white ">Your email</label>
     <input type="email" id="email" name='email' className="shadow-sm bg-[white] text-black  text-sm rounded-lg w-full p-2.5" placeholder="Enter your email" required />
   </div>
