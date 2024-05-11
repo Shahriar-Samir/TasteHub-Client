@@ -1,9 +1,11 @@
-import Lottie from 'lottie-react';
-import React from 'react';
+
+import { useLoaderData } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 
 const AllFoods = () => {
+    const {data} = useLoaderData()
+    console.log(data)
     return (
         <div>
             <ToastContainer/>
@@ -28,7 +30,7 @@ const AllFoods = () => {
                 <p className='text-center'>Results for : {<em>Food</em>}</p>
             </div>
             <div className='w-11/12 mx-auto max-w-[1200px] grid grid-cols-3 gap-10 mt-5'>
-                {[1,2,3,4,5].map(item=>{
+                {data.map(item=>{
                     return <Card/>
                 })}
             </div>
@@ -45,7 +47,7 @@ export default AllFoods;
 
 const Card = ()=>{
     return (
-        <div className="max-w-sm rounded overflow-hidden shadow-lg">
+        <div className="max-w-sm rounded overflow-hidden bg-gray-600">
   <img className="w-full" src="/images/loginBanner.jpg" alt="Sunset in the mountains"/>
   <div className="px-6 py-4">
     <div className="font-bold text-xl mb-2">The Coldest Sunset</div>

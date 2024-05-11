@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import PageNotFound from './pages/PageNotFound.jsx'
 import AllFoods from './pages/AllFoods.jsx'
 import Gallery from './pages/Gallery.jsx'
+import axios from 'axios'
 
 const router = createBrowserRouter([{
       path:'/',
@@ -31,7 +32,10 @@ const router = createBrowserRouter([{
         },
         {
           path: '/allFoods',
-          element: <AllFoods/>
+          element: <AllFoods/>,
+          loader:()=>{
+            return axios.get('http://localhost:5000/allFoods')
+          }
         },
         {
           path: '/gallery',
