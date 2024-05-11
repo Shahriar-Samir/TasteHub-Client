@@ -6,7 +6,7 @@ import { toast, ToastContainer } from 'react-toastify';
 
 
 const Register = () => {
-    const {signUp,updateUser} = useContext(AuthContext)
+    const {signUp,updateUser,setLoadingSpinner} = useContext(AuthContext)
     useEffect(()=>{
         document.querySelector('html').setAttribute('data-theme','light')
     },[])
@@ -31,6 +31,7 @@ const Register = () => {
                 })
             })
             .catch(err=>{
+                setLoadingSpinner(false)
                 if(err.message === 'Firebase: Error (auth/email-already-in-use).'){
                     toast.error('Email already in use')            
                 }

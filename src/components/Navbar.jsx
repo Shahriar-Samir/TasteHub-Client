@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../providers/AuthProvider';
+import profileLoading from '../../public/animations/profileLoading.json'
+import Lottie from 'lottie-react';
 
 const Navbar = () => {
+  const {loadingSpinner,userLoggedIn} = useContext(AuthContext)
+  console.log(loadingSpinner , userLoggedIn)
   return (
     <div className='py-2 fixed top-0 w-full'>
       <div className='md:flex justify-between items-center hidden px-2'>
@@ -12,7 +17,7 @@ const Navbar = () => {
         TasteHub</a>
         </div>
       <div className='hidden md:block'>
-      <Link to='/signin' className="btn">Sign In</Link>
+      {loadingSpinner? <Lottie animationData={profileLoading} loop={true} className="w-[50px]"/> : userLoggedIn? <img className="w-[50px] h-[50px] rounded-full object-cover" src={`${userLoggedIn.photoURL}`}/>  : <Link to='/signin' className="btn">Sign In</Link>}
       </div>
       </div>
      <div className="navbar p-0 m-0 min-h-fit ">
@@ -43,7 +48,7 @@ const Navbar = () => {
   </div>
   <div className="navbar-end">
     <div className='md:hidden'>
-    <Link to='/signin' className="btn">Sign In</Link>
+    {loadingSpinner? <Lottie animationData={profileLoading} loop={true} className="w-[50px]"/> : userLoggedIn? <img className="w-[50px] h-[50px] rounded-full object-cover" src={`${userLoggedIn.photoURL}`}/>  : <Link to='/signin' className="btn">Sign In</Link>}
     </div>
   </div>
 </div>

@@ -4,11 +4,11 @@ import Loading from '../pages/Loading';
 import { Navigate } from 'react-router-dom';
 
 const PrivateRoute = ({children}) => {
-    const {loadingSpinner,loggedIn} = useContext(AuthContext)
+    const {loadingSpinner,userLoggedIn} = useContext(AuthContext)
     if(loadingSpinner){
         return <Loading/>
     }
-    if(loggedIn){
+    if(userLoggedIn){
         return children
     }
 

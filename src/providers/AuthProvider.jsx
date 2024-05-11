@@ -9,14 +9,13 @@ const AuthProvider = ({children}) => {
     const googleAuthProvider = new GoogleAuthProvider
     const facebookAuthProvider = new FacebookAuthProvider
     const [loadingSpinner,setLoadingSpinner] = useState(true)
-    const [loggedIn,setUserLoggedin] = useState(null)
+    const [userLoggedIn,setUserLoggedin] = useState(null)
 
     useEffect(()=>{
             
         onAuthStateChanged(auth,user=>{
                 setUserLoggedin(user)
                 setLoadingSpinner(false)
-
 
     })
     },[])
@@ -46,7 +45,7 @@ const AuthProvider = ({children}) => {
         return updateProfile(auth.currentUser,data)
     }
 
-    const userHandlers = {signIn,signInWithGoogle,signInWithFacebook,signUp,updateUser,loggedIn,loadingSpinner}
+    const userHandlers = {signIn,signInWithGoogle,signInWithFacebook,signUp,updateUser,userLoggedIn,loadingSpinner,setLoadingSpinner}
     return (
         <AuthContext.Provider value={userHandlers}>
             {children}
