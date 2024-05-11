@@ -9,6 +9,8 @@ import Signin from './pages/Signin.jsx'
 import AuthProvider from './providers/AuthProvider.jsx'
 import 'react-toastify/dist/ReactToastify.css'
 import PageNotFound from './pages/PageNotFound.jsx'
+import AllFoods from './pages/AllFoods.jsx'
+import Gallery from './pages/Gallery.jsx'
 
 const router = createBrowserRouter([{
       path:'/',
@@ -26,6 +28,14 @@ const router = createBrowserRouter([{
         {
           path:'/signup',
           element: <Resgister/>
+        },
+        {
+          path: '/allFoods',
+          element: <AllFoods/>
+        },
+        {
+          path: '/gallery',
+          element: <Gallery/>
         },
       ]
 }])

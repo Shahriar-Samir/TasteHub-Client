@@ -31,7 +31,7 @@ const Navbar = () => {
         <Lottie animationData={profileLoading} loop={true} className="w-[50px]"/> 
         <Lottie animationData={buttonLoading} loop={true} className="text-white p-2 absolute bottom-[-50px] end-[-10px] w-[70px]"/> 
       </div>: userLoggedIn?  <div className='flex items-center relative'> <div className="dropdown">
-    <img tabIndex={0} className="w-[48px] h-[48px] border-2 border-white rounded-full object-cover" src={`${userLoggedIn.photoURL}`} role='button'/>
+    <img tabIndex={0} className="w-[48px] h-[48px] border-2 border-white rounded-full object-cover hover:opacity-75" src={`${userLoggedIn.photoURL}`} role='button'/>
       <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[10] p-2 shadow bg-black rounded-box w-52 right-[0px]">
       <li><Link to='/myFoodItems'>My added food itms</Link></li>
         <li><Link to='/addFoodItem'>Add a food item</Link></li>
