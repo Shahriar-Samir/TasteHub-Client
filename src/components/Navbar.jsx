@@ -35,7 +35,7 @@ const Navbar = () => {
       <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[10] p-2 shadow bg-black rounded-box w-52 right-[0px]">
       <li><Link to='/myFoodItems'>My added food itms</Link></li>
         <li><Link to='/addFoodItem'>Add a food item</Link></li>
-        <li><Link to='/myOrders'>My ordered food items</Link></li>
+        <li><Link to='/myPurchases'>My ordered food items</Link></li>
       </ul>
     </div>
     <button className='text-white py-2 w-[80px] absolute text-center bottom-[-45px] right-[-15px] rounded-md text-sm bg-[#C90B12]' onClick={signOutUser}>Log Out</button>

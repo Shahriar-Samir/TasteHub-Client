@@ -12,6 +12,11 @@ import PageNotFound from './pages/PageNotFound.jsx'
 import AllFoods from './pages/AllFoods.jsx'
 import Gallery from './pages/Gallery.jsx'
 import axios from 'axios'
+import AddFoodItem from './pages/AddFoodItem.jsx'
+import MyFoodItems from './pages/MyFoodItems.jsx'
+import MyPurchases from './pages/MyPurchase.jsx'
+import PurchaseItem from './pages/PurchaseItem.jsx'
+import UpdateFoodItem from './pages/UpdateFoodItem.jsx'
 
 const router = createBrowserRouter([{
       path:'/',
@@ -41,6 +46,26 @@ const router = createBrowserRouter([{
           path: '/gallery',
           element: <Gallery/>
         },
+        {
+          path: '/addFoodItem',
+          element: <AddFoodItem/>
+        },
+        {
+          path: '/updateFoodItem',
+          element: <UpdateFoodItem/>
+        },
+        {
+          path: '/myFoodItems',
+          element: <MyFoodItems/>
+        },
+        {
+          path: '/myPurchases',
+          element: <MyPurchases/>
+        },
+        {
+          path: '/purchaseItem',
+          element: <PurchaseItem/>
+        }
       ]
 }])
 
