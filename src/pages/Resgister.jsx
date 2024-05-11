@@ -25,6 +25,7 @@ const Register = () => {
         else{
             signUp(email,password)
             .then(()=>{
+                setLoadingSpinner(false)
                 updateUser({displayName:name, photoURL: photo})
                 .then(()=>{
                     toast.success('Account created successfully')

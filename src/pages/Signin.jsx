@@ -9,7 +9,7 @@ import { GrFacebookOption } from "react-icons/gr";
 
 
 const Signin = () => {
-    const {signIn,signInWithGoogle,signInWithFacebook} = useContext(AuthContext)
+    const {signIn,signInWithGoogle,signInWithFacebook,setLoadingSpinner} = useContext(AuthContext)
 
     useEffect(()=>{
         document.querySelector('html').setAttribute('data-theme','light')
@@ -18,9 +18,11 @@ const Signin = () => {
     const signInWithGoogleAccount = ()=>{
         signInWithGoogle()
         .then(()=>{
+            setLoadingSpinner(false)
             toast.success('Logged in successfully')
         })
         .catch(()=>{
+            setLoadingSpinner(false)
             toast.error('Something went wrong')
         })
     }
@@ -28,9 +30,11 @@ const Signin = () => {
     const signInWithFacebookAccount = ()=>{
         signInWithFacebook()
         .then(()=>{
+            setLoadingSpinner(false)
             toast.success('Logged in successfully')
         })
         .catch(()=>{
+            setLoadingSpinner(false)
             toast.error('Something went wrong')
         })
     }
@@ -46,8 +50,12 @@ const Signin = () => {
         }
         else{
             signIn(email,password)
-        .then(()=> toast.success('Logged in successfully'))
+        .then(()=>{
+            setLoadingSpinner(false)
+            toast.success('Logged in successfully')
+        })
         .catch(err=>{
+            setLoadingSpinner(false)
             if(err.message==='Firebase: Error (auth/invalid-credential).'){
                 toast.error('Incorrect email or password')
             }
