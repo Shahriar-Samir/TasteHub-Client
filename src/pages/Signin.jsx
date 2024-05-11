@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Typewriter } from 'react-simple-typewriter'
 import { AuthContext } from '../providers/AuthProvider';
 import { toast, ToastContainer } from 'react-toastify';
@@ -11,7 +11,9 @@ import buttonLoader from '../../public/animations/buttonLoading.json'
 
 const Signin = () => {
     const {signIn,signInWithGoogle,signInWithFacebook,setLoadingSpinner,loadingSpinner} = useContext(AuthContext)
-
+    const location = useLocation()
+    const navigate = useNavigate()
+    console.log(location)
     useEffect(()=>{
         document.querySelector('html').setAttribute('data-theme','light')
     },[])    
@@ -21,6 +23,7 @@ const Signin = () => {
         .then(()=>{
             setLoadingSpinner(false)
             toast.success('Logged in successfully')
+            navigate(location.state)
         })
         .catch(()=>{
             setLoadingSpinner(false)
@@ -33,6 +36,7 @@ const Signin = () => {
         .then(()=>{
             setLoadingSpinner(false)
             toast.success('Logged in successfully')
+            navigate(location.state)
         })
         .catch(()=>{
             setLoadingSpinner(false)
@@ -54,6 +58,8 @@ const Signin = () => {
         .then(()=>{
             setLoadingSpinner(false)
             toast.success('Logged in successfully')
+            navigate(location.state)
+            
         })
         .catch(err=>{
             setLoadingSpinner(false)

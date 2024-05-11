@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import { AuthContext } from './AuthProvider';
 import Loading from '../pages/Loading';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 
 const PrivateRoute = ({children}) => {
     const {loadingSpinner,userLoggedIn} = useContext(AuthContext)
+    const location = useLocation()
     if(loadingSpinner){
         return <Loading/>
     }
@@ -12,7 +13,7 @@ const PrivateRoute = ({children}) => {
         return children
     }
 
-    return <Navigate to='/signin'></Navigate>
+    return <Navigate to='/signin' state={location.pathname}></Navigate>
 };
 
 export default PrivateRoute;

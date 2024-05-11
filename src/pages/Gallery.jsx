@@ -1,19 +1,56 @@
 import React, { useContext } from 'react';
 import { FaCirclePlus } from "react-icons/fa6";
 import { AuthContext } from '../providers/AuthProvider';
+import { useLocation, useNavigate} from 'react-router-dom';
+import axios from 'axios'
+import { toast, ToastContainer } from 'react-toastify';
 
 const Gallery = () => {
     const {userLoggedIn} = useContext(AuthContext)
+    const location = useLocation()
+    const navigate = useNavigate()
+
+
+    const addFeedback = (e)=>{
+            e.preventDefault()
+            const form = e.target
+            const name = userLoggedIn?.displayName
+            const feedback = form.feedback.value
+            const image = form.image.value
+            axios.post('http://localhost:5000/addFeedback', {name, feedback, image})
+            .then(res=>{
+                toast.success('Feedback added successfully')
+                setTimeout(()=>{
+                    navigate(0)
+                },1500)
+            })
+            .catch(err=>{
+               toast.error('Something went wrong')
+            })
+    }
+
+
+    const showModal = ()=>{
+        if(!userLoggedIn){
+            return navigate('/signIn',{ state: location.pathname})
+        }
+        else{
+            document.getElementById('my_modal_5').showModal()
+        }
+    }
+
     return (
         <div>
+           
               <div className="bg-[linear-gradient(to_top,rgba(0,0,0,0.4),rgba(0,0,0,0)),linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0)),url('/images/foodGallery.jpg')] bg-no-repeat bg-cover flex justify-center items-center gap-10 h-[70vh] w-full">
                 <h1 className='text-5xl font-bold'>Gallery</h1>
             </div>
             <div className='flex justify-center mt-10'>
            
                 {/* Open the modal using document.getElementById('ID').showModal() method */}
-<button className="btn text-white font-bold bg-[#C90B12] hover:bg-[#8e282b]" onClick={()=>document.getElementById('my_modal_5').showModal()}>Add <FaCirclePlus/></button>
+<button className="btn text-white font-bold bg-[#C90B12] hover:bg-[#8e282b]" onClick={showModal}>Add <FaCirclePlus/></button>
 <dialog id="my_modal_5" className="modal modal-middle">
+<ToastContainer toastStyle={{backgroundColor:'#00000080',color:'white'}}/>
   <div className="rounded-lg p-5 w-11/12 max-w-[350px] bg-gray-700">
   <div className="modal-action m-0 ">
       <form method="dialog">
@@ -21,7 +58,7 @@ const Gallery = () => {
         <button className="text-white rotate-45 text-xl"><FaCirclePlus/></button>
       </form>
     </div>
-    <form className="card-body mx-auto p-0 text-white">
+    <form className="card-body mx-auto p-0 text-white" onSubmit={addFeedback}>
         <h1 className='font-bold text-2xl'>Share your experience</h1>
         <div className="form-control">
           <label className="label">
@@ -33,13 +70,13 @@ const Gallery = () => {
           <label className="label">
             <span className="label-text text-white">Feedback</span>
           </label>
-          <textarea type="text" placeholder="Your feedback" className="rounded-md h-[15vh] max-h-[20vh] p-2 border-white border-2 bg-transparent" required></textarea>
+          <textarea type="text" placeholder="Your feedback" className="rounded-md h-[15vh] max-h-[20vh] p-2 border-white border-2 bg-transparent" name='feedback' required></textarea>
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text text-white">Image</span>
           </label>
-          <input type="text" placeholder="Image URL" className="input input-bordered border-white border-2 bg-transparent" required />
+          <input type="text" placeholder="Image URL" className="input input-bordered border-white border-2 bg-transparent" name='image' required />
         </div>
         <div className="form-control mt-6">
           <button className="btn bg-[#C90B12] hover:bg-[#8e282b] text-white border-0">Add</button>
