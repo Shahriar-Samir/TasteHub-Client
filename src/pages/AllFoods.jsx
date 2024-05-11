@@ -10,7 +10,8 @@ const AllFoods = () => {
             <div className="bg-[linear-gradient(to_top,rgba(0,0,0,0.4),rgba(0,0,0,0)),linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0)),url('/images/allFoods.jpg')] bg-no-repeat bg-cover flex justify-center items-center gap-10 h-[80vh]">
                 <h1 className='text-5xl font-bold'>All Food Items</h1>
             </div>
-            <div>
+
+            <div className='mt-14'>
             <form className="max-w-md mx-auto">   
                 <label htmlFor="default-search" className="mb-2 text-sm font-medium text-white sr-only ">Search</label>
                 <div className="relative">
@@ -23,11 +24,13 @@ const AllFoods = () => {
                     <button type="submit" className="text-white absolute end-2.5 bottom-2.5 bg-[#C90B12] hover:bg-[#8e282b] font-medium rounded-lg text-sm px-4 py-2 ">Search</button>
                 </div>
             </form>
-            <div className='w-11/12 max-w-[1200px] mx-auto'>
-                <p>Results for : {<em>Food</em>}</p>
+            <div className='w-11/12 max-w-[1200px] mx-auto mt-5'>
+                <p className='text-center'>Results for : {<em>Food</em>}</p>
             </div>
-            <div className='w-11/12 mx-auto max-w-[1200px] grid grid-cols-3'>
-                
+            <div className='w-11/12 mx-auto max-w-[1200px] grid grid-cols-3 gap-10 mt-5'>
+                {[1,2,3,4,5].map(item=>{
+                    return <Card/>
+                })}
             </div>
             </div>
         </div>
@@ -35,3 +38,26 @@ const AllFoods = () => {
 };
 
 export default AllFoods;
+
+
+// card component
+
+
+const Card = ()=>{
+    return (
+        <div className="max-w-sm rounded overflow-hidden shadow-lg">
+  <img className="w-full" src="/images/loginBanner.jpg" alt="Sunset in the mountains"/>
+  <div className="px-6 py-4">
+    <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
+    <p className="text-white text-base">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+    </p>
+  </div>
+  <div className="px-6 pt-4 pb-2">
+    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
+    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
+    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+  </div>
+</div>
+    )
+}
