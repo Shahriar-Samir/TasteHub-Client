@@ -52,6 +52,13 @@ const router = createBrowserRouter([{
           }
         },
         {
+          path: '/purchaseItem/:id',
+          element: <PurchaseItem/>,
+          loader: ({params})=>{
+            return axios.get(`http://localhost:5000/foodDetails/${params.id}`)
+          }
+        },
+        {
           path: '/gallery',
           element: <Gallery/>,
           loader: ()=>{
