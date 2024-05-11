@@ -3,6 +3,7 @@ import { useLoaderData } from 'react-router-dom';
 
 const FoodDetails = () => {
     const {data} = useLoaderData()
+    console.log(data)
     return (
         <div className='h-[100vh]'>
             <img src={data.image}/>

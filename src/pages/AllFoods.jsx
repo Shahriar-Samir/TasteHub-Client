@@ -1,5 +1,5 @@
 
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 
@@ -30,7 +30,7 @@ const AllFoods = () => {
             </div>
             <div className='w-11/12 mx-auto max-w-[1200px] grid grid-cols-3 gap-10 mt-5'>
                 {data.map(item=>{
-                    return <Card/>
+                    return <Card key={item._id} item={item}/>
                 })}
             </div>
             </div>
@@ -44,15 +44,17 @@ export default AllFoods;
 // card component
 
 
-const Card = ()=>{
+const Card = ({item})=>{
+    const {foodName,foodImage,_id} = item
     return (
         <div className="max-w-sm rounded overflow-hidden bg-gray-600">
-  <img className="w-full" src="/images/loginBanner.jpg" alt="Sunset in the mountains"/>
+  <img className="w-full" src={foodImage} />
   <div className="px-6 py-4">
-    <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
+    <div className="font-bold text-xl mb-2">{foodName}</div>
     <p className="text-white text-base">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
     </p>
+    <Link to={`/foodDetails/${_id}`}>View Details</Link>
   </div>
   <div className="px-6 pt-4 pb-2">
     <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>

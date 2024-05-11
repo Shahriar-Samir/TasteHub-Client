@@ -30,6 +30,7 @@ const Register = () => {
                 setLoadingSpinner(false)
                 updateUser({displayName:name, photoURL: photo})
                 .then(()=>{
+                    setLoadingSpinner(false)
                     toast.success('Account created successfully')
                 })
             })

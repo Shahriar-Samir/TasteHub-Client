@@ -4,10 +4,12 @@ import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import Lottie from 'lottie-react';
 import buttonLoader from '../../public/animations/buttonLoading.json'
+import { useNavigate } from 'react-router-dom';
 
 const AddFoodItem = () => {
     const {userLoggedIn} = useContext(AuthContext)
     const [loading, setLoading] = useState(false)
+    const navigate = useNavigate()
     const submit = (e)=>{
         setLoading(true)
         e.preventDefault()
@@ -25,8 +27,10 @@ const AddFoodItem = () => {
         axios.post('http://localhost:5000/addFood',{foodName,foodImage,foodCategory,quantity,price,name,email,foodOrigin,description})
         .then(res=>{
             setLoading(false)
-            console.log(res)
             toast.success('+Added a new food item')
+            setTimeout(()=>{
+              navigate('/myFoodItems')
+            },1500)
         })
         .catch(err=>{
             setLoading(false)
