@@ -68,7 +68,7 @@ const Signin = () => {
 
     return (
         <>
-        <ToastContainer/>
+    <ToastContainer toastStyle={{backgroundColor:'#00000080',color:'white'}}/>
         <div className="h-[100vh] w-full  bg-[linear-gradient(to_top,rgba(0,0,0,0.4),rgba(0,0,0,0)),linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0)),url('/images/loginBanner.jpg')] bg-no-repeat bg-cover flex justify-center items-center gap-10">
                 <div className='md:w-1/3 flex justify-center items-center'>
 <form className="w-11/12 max-w-[300px] mt-20" onSubmit={submit}>

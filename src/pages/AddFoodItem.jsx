@@ -1,9 +1,15 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
+import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
+import Lottie from 'lottie-react';
+import buttonLoader from '../../public/animations/buttonLoading.json'
 
 const AddFoodItem = () => {
     const {userLoggedIn} = useContext(AuthContext)
+    const [loading, setLoading] = useState(false)
     const submit = (e)=>{
+        setLoading(true)
         e.preventDefault()
         const form = e.target
         const foodName = form.foodName.value
@@ -15,9 +21,22 @@ const AddFoodItem = () => {
         const email = form.email.value
         const foodOrigin = form.foodOrigin.value
         const description = form.description.value
-        console.log(foodName,foodImage,foodCategory,quantity,price,name,email,foodOrigin,description)
+
+        axios.post('http://localhost:5000/addFood',{foodName,foodImage,foodCategory,quantity,price,name,email,foodOrigin,description})
+        .then(res=>{
+            setLoading(false)
+            console.log(res)
+            toast.success('+Added a new food item')
+        })
+        .catch(err=>{
+            setLoading(false)
+            console.log(err)
+            toast.error('Something went wrong')
+        })
     }
     return (
+        <>
+        <ToastContainer toastStyle={{backgroundColor:'#00000080',color:'white'}}/>
         <div className="h-[150vh] w-full  bg-[linear-gradient(to_top,rgba(0,0,0,0.4),rgba(0,0,0,0)),linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0)),url('/images/foodCooking.jpeg')] bg-no-repeat bg-cover flex justify-center items-center gap-10 text-white">
           <form className="card-body bg-[#FFFFFF80] w-11/12 max-w-[500px] mt-32" onSubmit={submit}>
             <h1 className='text-center text-3xl font-bold'>Add a new food item</h1>
@@ -78,10 +97,12 @@ const AddFoodItem = () => {
         </div>
             </div>  
         <div className="form-control mt-6">
-          <button className="btn border-0 text-white bg-[#C90B12] hover:bg-[#8e282b]">Add Food Item</button>
+         {loading?  <button className="btn-disabled border rounded-md bg-transparent border-[#C90B12] flex justify-center items-center"><Lottie animationData={buttonLoader} loop={true} className='w-[50px]'/></button>:  <button className="btn border-0 text-white bg-[#C90B12] hover:bg-[#8e282b]">Add Food Item</button>}
+    
         </div>
       </form>
         </div>
+        </>
     );
 };
 

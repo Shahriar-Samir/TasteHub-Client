@@ -8,7 +8,7 @@ const AllFoods = () => {
     console.log(data)
     return (
         <div>
-            <ToastContainer/>
+           <ToastContainer toastStyle={{backgroundColor:'#00000080',color:'white'}}/>
             <div className="bg-[linear-gradient(to_top,rgba(0,0,0,0.4),rgba(0,0,0,0)),linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0)),url('/images/allFoods.jpg')] bg-no-repeat bg-cover flex justify-center items-center gap-10 h-[80vh]">
                 <h1 className='text-5xl font-bold'>All Food Items</h1>
             </div>
