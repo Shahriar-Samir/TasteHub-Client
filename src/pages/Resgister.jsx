@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import { Typewriter } from 'react-simple-typewriter'
 import { AuthContext } from '../providers/AuthProvider';
 import { toast, ToastContainer } from 'react-toastify';
+import Lottie from 'lottie-react';
+import buttonLoader from '../../public/animations/buttonLoading.json'
 
 
 const Register = () => {
-    const {signUp,updateUser,setLoadingSpinner} = useContext(AuthContext)
+    const {signUp,updateUser,setLoadingSpinner,loadingSpinner} = useContext(AuthContext)
     useEffect(()=>{
         document.querySelector('html').setAttribute('data-theme','light')
     },[])
@@ -67,7 +69,8 @@ const Register = () => {
     <input type="password" id="password" className="shadow-sm bg-[white] text-black  text-sm rounded-lg w-full p-2.5   " placeholder="Enter your password" required />
   </div>
  
-  <button type="submit" className="w-full text-white bg-[#C90B12] hover:bg-[#8e282b] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
+  {loadingSpinner?  <button className="w-full btn-disabled border rounded-md bg-transparent border-[#C90B12] flex justify-center items-center p-[4.5px]"><Lottie animationData={buttonLoader} loop={true} className='w-[30px]'/></button>:  <button type="submit" className="w-full text-white bg-[#C90B12] hover:bg-[#8e282b] font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>}
+
   <p className='mt-4 text-sm text-center'>Already have an account? <Link to='/signin' className='font-bold hover:underline'>Sing In</Link></p>
 </form>
 

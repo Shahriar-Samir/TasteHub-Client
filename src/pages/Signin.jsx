@@ -5,11 +5,12 @@ import { AuthContext } from '../providers/AuthProvider';
 import { toast, ToastContainer } from 'react-toastify';
 import { FcGoogle } from "react-icons/fc";
 import { GrFacebookOption } from "react-icons/gr";
-
+import Lottie from 'lottie-react';
+import buttonLoader from '../../public/animations/buttonLoading.json'
 
 
 const Signin = () => {
-    const {signIn,signInWithGoogle,signInWithFacebook,setLoadingSpinner} = useContext(AuthContext)
+    const {signIn,signInWithGoogle,signInWithFacebook,setLoadingSpinner,loadingSpinner} = useContext(AuthContext)
 
     useEffect(()=>{
         document.querySelector('html').setAttribute('data-theme','light')
@@ -93,7 +94,7 @@ const Signin = () => {
     <input type="password" id="password" name='password' className="shadow-sm bg-[white] text-black  text-sm rounded-lg w-full p-2.5   " placeholder="Enter your password" required />
   </div>
  
-  <button type="submit" className="w-full text-white bg-[#C90B12] hover:bg-[#8e282b] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign In</button>
+         {loadingSpinner?  <button className="w-full btn-disabled border rounded-md bg-transparent border-[#C90B12] flex justify-center items-center p-[4.5px]"><Lottie animationData={buttonLoader} loop={true} className='w-[30px]'/></button>:  <button type="submit" className="w-full text-white bg-[#C90B12] hover:bg-[#8e282b] font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign In</button>}
   <p className='mt-4 text-sm text-center'>Don't have an account? <Link to='/signup' className='font-bold hover:underline'>Create a new account</Link></p>
 </form>
 
