@@ -5,7 +5,6 @@ import { ToastContainer } from 'react-toastify';
 
 const AllFoods = () => {
     const {data} = useLoaderData()
-    console.log(data)
     return (
         <div>
            <ToastContainer toastStyle={{backgroundColor:'#00000080',color:'white'}}/>

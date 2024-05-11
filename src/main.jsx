@@ -45,7 +45,10 @@ const router = createBrowserRouter([{
         },
         {
           path: '/gallery',
-          element: <Gallery/>
+          element: <Gallery/>,
+          loader: ()=>{
+            return axios.get('http://localhost:5000/allFeedbacks')
+          }
         },
         {
           path: '/addFoodItem',

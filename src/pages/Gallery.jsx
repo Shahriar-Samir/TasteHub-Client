@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { FaCirclePlus } from "react-icons/fa6";
 import { AuthContext } from '../providers/AuthProvider';
-import { useLocation, useNavigate} from 'react-router-dom';
+import { useLoaderData, useLocation, useNavigate} from 'react-router-dom';
 import axios from 'axios'
 import { toast, ToastContainer } from 'react-toastify';
 
@@ -9,8 +9,7 @@ const Gallery = () => {
     const {userLoggedIn} = useContext(AuthContext)
     const location = useLocation()
     const navigate = useNavigate()
-
-
+    const {data} = useLoaderData()
     const addFeedback = (e)=>{
             e.preventDefault()
             const form = e.target
@@ -85,6 +84,14 @@ const Gallery = () => {
   </div>
 </dialog>
             </div>
+        <div  className='mt-10 mx-auto w-11/12 max-w-[1200px] '>
+          <h1 className='text-xl font-bold text-center'>All the feedbacks</h1>
+          <div className='grid grid-cols-3 mt-12'>
+              {data.map(item=>{
+                return <p>{item.name}</p>
+              })}
+            </div>
+        </div>
         </div>
     );
 };
