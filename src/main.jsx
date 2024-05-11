@@ -17,6 +17,7 @@ import MyFoodItems from './pages/MyFoodItems.jsx'
 import MyPurchases from './pages/MyPurchase.jsx'
 import PurchaseItem from './pages/PurchaseItem.jsx'
 import UpdateFoodItem from './pages/UpdateFoodItem.jsx'
+import PrivateRoute from './providers/PrivateRoute.jsx'
 
 const router = createBrowserRouter([{
       path:'/',
@@ -48,7 +49,7 @@ const router = createBrowserRouter([{
         },
         {
           path: '/addFoodItem',
-          element: <AddFoodItem/>
+          element: <PrivateRoute><AddFoodItem/></PrivateRoute>
         },
         {
           path: '/updateFoodItem',
