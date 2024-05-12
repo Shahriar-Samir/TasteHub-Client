@@ -27,7 +27,10 @@ const router = createBrowserRouter([{
       children:[
         {
           path:'/',
-          element: <Home/>
+          element: <Home/>,
+          loader: ()=>{
+             return axios.get('http://localhost:5000/topPurchasedItems')
+          }
         },
         {
           path:'/signin',
