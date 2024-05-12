@@ -5,10 +5,14 @@ import { AuthContext } from '../providers/AuthProvider';
 import { toast, ToastContainer } from 'react-toastify';
 import Lottie from 'lottie-react';
 import buttonLoader from '../../public/animations/buttonLoading.json'
+import axios from 'axios';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import app from '../firebase/firebase';
 
 
 const Register = () => {
     const {signUp,updateUser,setLoadingSpinner,loadingSpinner} = useContext(AuthContext)
+    const auth = getAuth(app)
     useEffect(()=>{
         document.querySelector('html').setAttribute('data-theme','light')
     },[])
@@ -32,6 +36,19 @@ const Register = () => {
                 .then(()=>{
                     setLoadingSpinner(false)
                     toast.success('Account created successfully')
+                    onAuthStateChanged(auth,user=>{
+                        const {
+                            uid,
+                            email,
+                            displayName,
+                            photoURL} = user
+
+                        axios.post('http://localhost:5000/addUser',{
+                            uid,
+                            email,
+                            displayName,
+                            photoURL})
+                    })
                 })
             })
             .catch(err=>{
@@ -43,6 +60,7 @@ const Register = () => {
                     toast.error('Something went wrong')
                 }
             })
+          
         }
     }
     

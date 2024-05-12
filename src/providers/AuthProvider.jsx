@@ -3,9 +3,11 @@ import {createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, GoogleAut
 import app from '../firebase/firebase';
 
 
+
 export const AuthContext = createContext(null)
 const AuthProvider = ({children}) => {
     const auth = getAuth(app)
+    const user = auth.currentUser
     const googleAuthProvider = new GoogleAuthProvider
     const facebookAuthProvider = new FacebookAuthProvider
     const [loadingSpinner,setLoadingSpinner] = useState(true)
@@ -16,7 +18,6 @@ const AuthProvider = ({children}) => {
         onAuthStateChanged(auth,user=>{
                 setUserLoggedin(user)
                 setLoadingSpinner(false)
-
     })
     },[])
 
@@ -49,7 +50,7 @@ const AuthProvider = ({children}) => {
         return signOut(auth)
     }
 
-    const userHandlers = {signIn,signInWithGoogle,signInWithFacebook,signUp,updateUser,userLoggedIn,loadingSpinner,setLoadingSpinner,signOutUser}
+    const userHandlers = {signIn,signInWithGoogle,signInWithFacebook,signUp,updateUser,userLoggedIn,loadingSpinner,setLoadingSpinner,signOutUser,user}
     return (
         <AuthContext.Provider value={userHandlers}>
             {children}
