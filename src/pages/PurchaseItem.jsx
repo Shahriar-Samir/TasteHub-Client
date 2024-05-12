@@ -39,13 +39,14 @@ const PurchaseItem = () => {
           const email = form.email.value
           const purchaseDate = form.purchaseDate.value
           const foodId = data._id
-          console.log({foodName,foodId,price,quantity,name,email,purchaseDate})
-          axios.post('http://localhost:5000/addPurchaseItem',{foodName,foodId,price,quantity,name,email,purchaseDate})
+          const {foodImage,foodOrigin} = data
+          const foodOwner = data.name
+          axios.post('http://localhost:5000/addPurchaseItem',{foodName,foodId,foodImage,price,quantity,name,email,purchaseDate,foodOrigin,foodOwner})
           .then(res=>{
               setLoading(false)
               toast.success('Item purchased successfully')
               setTimeout(()=>{
-                  navigate('/myPurchases')
+                  navigate(`/myPurchases/${userLoggedIn.email}`)
               },2000)
           })
           .catch(err=>{

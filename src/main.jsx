@@ -81,8 +81,11 @@ const router = createBrowserRouter([{
           element: <PrivateRoute><MyFoodItems/></PrivateRoute>,
         },
         {
-          path: '/myPurchases',
-          element: <MyPurchases/>
+          path: '/myPurchases/:email',
+          element: <MyPurchases/>,
+          loader: ({params})=>{
+             return axios(`http://localhost:5000/myPurchasedItems/${params.email}`)
+          }
         },
         {
           path: '/purchaseItem',
