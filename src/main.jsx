@@ -75,9 +75,9 @@ const router = createBrowserRouter([{
         {
           path: `/updateFoodItem/:id`,
           element: <UpdateFoodItem/>,
-          // loader:({params})=>{
-          //     return axios.get(`http://localhost:5000/updateFoodItem/${params.id}`)
-          // }
+          loader:({params})=>{
+              return axios.get(`http://localhost:5000/foodDetails/${params.id}`)
+          }
         },
         {
           path: '/myFoodItems',
