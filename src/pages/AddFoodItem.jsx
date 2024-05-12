@@ -17,8 +17,8 @@ const AddFoodItem = () => {
         const foodName = form.foodName.value
         const foodImage = form.foodImage.value
         const foodCategory = form.foodCategory.value
-        const quantity = form.quantity.value
-        const price = form.price.value
+        const quantity = parseInt(form.quantity.value)
+        const price = parseInt(form.price.value)
         const name = form.name.value
         const email = form.email.value
         const foodOrigin = form.foodOrigin.value

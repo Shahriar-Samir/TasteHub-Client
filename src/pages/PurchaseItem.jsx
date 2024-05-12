@@ -2,15 +2,17 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import Lottie from 'lottie-react';
 import buttonLoader from '../../public/animations/buttonLoading.json'
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
 
 const PurchaseItem = () => {
     const {userLoggedIn} = useContext(AuthContext)
     const {data} = useLoaderData()
     const [loading, setLoading] = useState(false)
     const [priceValue,setPriceValue] = useState(data.price)
-
- 
+    const navigate = useNavigate()
+  console.log(typeof data.price)
     const [time,setTime] = useState(new Date())
 
     useEffect(()=>{
@@ -26,8 +28,30 @@ const PurchaseItem = () => {
 
     const formattedTime = `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`
 
-    const submit = ()=>{
-
+    const submit = (e)=>{
+          setLoading(true)
+          e.preventDefault()
+          const form = e.target 
+          const foodName = form.foodName.value
+          const price = parseInt(form.price.value)
+          const quantity = parseInt(form.quantity.value)
+          const name = form.name.value
+          const email = form.email.value
+          const purchaseDate = form.purchaseDate.value
+          const foodId = data._id
+          console.log({foodName,foodId,price,quantity,name,email,purchaseDate})
+          axios.post('http://localhost:5000/addPurchaseItem',{foodName,foodId,price,quantity,name,email,purchaseDate})
+          .then(res=>{
+              setLoading(false)
+              toast.success('Item purchased successfully')
+              setTimeout(()=>{
+                  navigate('/myPurchases')
+              },2000)
+          })
+          .catch(err=>{
+              setLoading(false)
+              toast.error('Something went wrong')
+          })
     }
 
     const updatePrice = (e)=>{
@@ -39,6 +63,7 @@ const PurchaseItem = () => {
 
     return (
        <div className='w-11/12 max-w-[1100px] mx-auto mt-48 h-[100vh] '>
+       <ToastContainer toastStyle={{backgroundColor:'#00000080',color:'white'}}/>
         <h1 className='text-3xl font-bold text-center mb-14'>Purchase Food Item</h1>
          <div className='flex justify-between gap-10'>
            <div className='w-1/2 flex flex-col gap-3 items-start'>
@@ -87,7 +112,7 @@ const PurchaseItem = () => {
           <label className="label">
             <span className="label-text text-white">Current Time</span>
           </label>
-          <input value={`${formattedTime} ${month} ${date}, ${year}`} readOnly className="input input-bordered bg-transparent border-white placeholder-slate-300"/>
+          <input value={`${formattedTime} ${month} ${date}, ${year}`} readOnly className="input input-bordered bg-transparent border-white placeholder-slate-300" name='purchaseDate'/>
         </div>
 
             </div>  
