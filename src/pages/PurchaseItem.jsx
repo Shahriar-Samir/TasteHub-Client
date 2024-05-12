@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import Lottie from 'lottie-react';
 import buttonLoader from '../../public/animations/buttonLoading.json'
@@ -10,7 +10,21 @@ const PurchaseItem = () => {
     const [loading, setLoading] = useState(false)
     const [priceValue,setPriceValue] = useState(data.price)
 
-    const date = new Date()
+ 
+    const [time,setTime] = useState(new Date())
+
+    useEffect(()=>{
+        setInterval(()=> setTime(new Date()),1000)
+    },[])
+
+    const date = time.getDate();
+    const month = time.toLocaleString('default', { month: 'long' });
+    const year = time.getFullYear();
+    const hours = time.getHours();
+    const minutes = time.getMinutes();
+    const seconds = time.getSeconds();
+
+    const formattedTime = `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`
 
     const submit = ()=>{
 
@@ -43,7 +57,7 @@ const PurchaseItem = () => {
           <label className="label">
             <span className="label-text text-white">Food Name</span>
           </label>
-          <input type="text" defaultValue={data.foodName} placeholder="Food name" className="input input-bordered bg-transparent border-white placeholder-slate-300" name='foodName' required/>
+          <input type="text" defaultValue={data.foodName} placeholder="Food name" readOnly className="input input-bordered bg-transparent border-white placeholder-slate-300" name='foodName' required/>
         </div>
         <div className="form-control">
           <label className="label">
@@ -73,13 +87,12 @@ const PurchaseItem = () => {
           <label className="label">
             <span className="label-text text-white">Current Time</span>
           </label>
-          <input defaultValue={date.getTime()} readOnly className="input input-bordered bg-transparent border-white placeholder-slate-300"/>
+          <input value={`${formattedTime} ${month} ${date}, ${year}`} readOnly className="input input-bordered bg-transparent border-white placeholder-slate-300"/>
         </div>
 
             </div>  
         <div className="form-control mt-6">
          {loading?  <button className="btn-disabled border rounded-md bg-transparent border-[#C90B12] flex justify-center items-center"><Lottie animationData={buttonLoader} loop={true} className='w-[50px]'/></button>:  <button className="btn border-0 text-white bg-[#C90B12] hover:bg-[#8e282b]">Purchase</button>}
-    
         </div>
       </form>
           </div>
