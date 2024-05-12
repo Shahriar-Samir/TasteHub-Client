@@ -1,11 +1,26 @@
+import axios from 'axios';
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 
 const MyPurchases = () => {
     const {data} = useLoaderData()
     console.log(data)
+
+    const deletePurchaseData = (id)=>{
+        document.getElementById(id).style.display = 'none'
+        axios.delete(`http://localhost:5000/deletePurchaseItem/${id}`)
+        .then(res=>{
+            toast.success('Purchased food Item deleted')
+        })
+        .catch(err=>{
+            toast.error('Something went wrong')
+        })
+    }
+
     return (
         <div className='w-11/12 max-w-[1200px] mx-auto'>
+                <ToastContainer toastStyle={{backgroundColor:'#00000080',color:'white'}}/>
             <div className="overflow-x-auto mt-40">
   <table className="table">
     {/* head */}
@@ -23,7 +38,7 @@ const MyPurchases = () => {
     <tbody>
     {data.map(item=>{
         const {foodName,food} = item
-        return  <tr key={item._id}>
+        return  <tr key={item._id} id={item._id}>
         <td>
           <div className="flex items-center gap-3">
             <div className="avatar">
@@ -50,7 +65,7 @@ const MyPurchases = () => {
           <span className="">{item.purchaseDate}</span>
         </td>
         <td>
-          <span className="btn bg-[#C90B12] hover:bg-[#8e282b] text-white">Delete</span>
+          <span onClick={()=>{deletePurchaseData(item._id)}} className="btn bg-[#C90B12] hover:bg-[#8e282b] text-white">Delete</span>
         </td>
       </tr>
     })}
