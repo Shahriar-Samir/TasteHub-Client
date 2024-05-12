@@ -4,6 +4,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import Loading from './Loading';
 import { ToastContainer } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 
 const MyFoodItems = () => {
@@ -40,7 +41,7 @@ export default MyFoodItems;
 // food item card 
 
 const FoodItem = ({item})=>{
-    const {foodName,foodImage,} = item
+    const {foodName,foodImage,_id} = item
     return(
         <div className="card shadow-xl">
   <figure><img src={foodImage} /></figure>
@@ -48,7 +49,7 @@ const FoodItem = ({item})=>{
     <h2 className="card-title">{foodName}</h2>
     <p>If a dog chews shoes whose shoes does he choose?</p>
     <div className="card-actions justify-end">
-      <button className="btn btn-primary">Buy Now</button>
+      <Link className="btn btn-primary" to={`/updateFoodItem/${_id}`}>Update</Link>
     </div>
   </div>
 </div>

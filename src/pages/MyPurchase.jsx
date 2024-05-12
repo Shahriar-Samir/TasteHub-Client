@@ -19,10 +19,12 @@ const MyPurchases = () => {
     }
 
     return (
-        <div className='w-11/12 max-w-[1200px] mx-auto'>
+        <div className='w-11/12 max-w-[1000px] mx-auto'>
                 <ToastContainer toastStyle={{backgroundColor:'#00000080',color:'white'}}/>
             <div className="overflow-x-auto mt-40">
-  <table className="table">
+                <div><button>Back </button></div>
+            <h1 className='text-center text-2xl font-bold'>My Purchased Items</h1>
+  <table className="table mt-4">
     {/* head */}
     <thead>
       <tr>

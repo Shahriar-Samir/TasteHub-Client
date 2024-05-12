@@ -73,8 +73,11 @@ const router = createBrowserRouter([{
           element: <PrivateRoute><AddFoodItem/></PrivateRoute>
         },
         {
-          path: '/updateFoodItem',
-          element: <UpdateFoodItem/>
+          path: `/updateFoodItem/:id`,
+          element: <UpdateFoodItem/>,
+          // loader:({params})=>{
+          //     return axios.get(`http://localhost:5000/updateFoodItem/${params.id}`)
+          // }
         },
         {
           path: '/myFoodItems',
