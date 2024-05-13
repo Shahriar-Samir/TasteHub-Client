@@ -2,6 +2,8 @@ import {useEffect } from 'react';
 import {Helmet, HelmetProvider} from 'react-helmet-async'
 import { Link, useLoaderData } from 'react-router-dom';
 import ChefsSpecial from '../components/ChefsSpecial';
+import GlobalGasronomy from '../components/GlobalGasronomy';
+import Banner from '../components/Banner';
 
 
 const Home = () => {
@@ -18,6 +20,7 @@ const Home = () => {
                 </Helmet>
             </HelmetProvider>
             <div>
+                <Banner/>
                 <h1 className='text-2xl font-bold text-center text-[gold]'>Six Top Selling Foods</h1>
             <div className='grid grid-cols-3 gap-14 mt-14'>
                 {data.map(item=>{
@@ -29,6 +32,7 @@ const Home = () => {
             </div>
             </div>
             <ChefsSpecial/>
+            <GlobalGasronomy/>
         </div>
     );
 };
