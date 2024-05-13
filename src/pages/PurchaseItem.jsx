@@ -5,6 +5,7 @@ import buttonLoader from '../../public/animations/buttonLoading.json'
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const PurchaseItem = () => {
     const {userLoggedIn} = useContext(AuthContext)
@@ -65,7 +66,11 @@ const PurchaseItem = () => {
 
     return (
        <div className='w-11/12 max-w-[1100px] mx-auto mt-48 h-[100vh] '>
-       
+        <HelmetProvider>
+        <Helmet>
+            <title>TasteHub || Purchase Item</title>
+        </Helmet>
+        </HelmetProvider>
         <h1 className='text-3xl font-bold text-center mb-14'>Purchase Food Item</h1>
          <div className='flex justify-between gap-10'>
            <div className='w-1/2 flex flex-col gap-3 items-start'>

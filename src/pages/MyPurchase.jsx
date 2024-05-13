@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import { AuthContext } from '../providers/AuthProvider';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const MyPurchases = () => {
     const {data} = useLoaderData()
@@ -23,7 +24,11 @@ const MyPurchases = () => {
 
     return (
         <div className='w-11/12 max-w-[1000px] mx-auto'>
-                
+                 <HelmetProvider>
+        <Helmet>
+            <title>TasteHub || My Purchases</title>
+        </Helmet>
+    </HelmetProvider>
             <div className="overflow-x-auto mt-40">
                 <div><button>Back </button></div>
             <h1 className='text-center text-2xl font-bold'>My Purchased Items</h1>

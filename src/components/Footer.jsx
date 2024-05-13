@@ -3,13 +3,14 @@ import React from 'react';
 const Footer = () => {
     return (
         <div className='mt-20 bg-[#414141]'>
+            <div className='w-11/12 mx-auto'>
             <footer className="footer px-10 py-4 border-t text-base-content border-base-300">
   <aside className="items-center grid-flow-col gap-5">
     <div className='flex flex-col items-center'>
     <img src='/icons/icon.png'/>
         <h1 className='text-2xl font-bold text-white'>TasteHub</h1>
     </div>
-    <p className='max-w-[300px] text-lg text-white'>Discover a world of flavors, curated by top chefs, and embark on a journey of gastronomic delight</p>
+    <p className='max-w-[300px] text-lg text-[#c4c4c4]'>Discover a world of flavors, curated by top chefs, and embark on a journey of gastronomic delight</p>
   </aside> 
   <nav className="md:place-self-center md:justify-self-end">
     <div className="grid grid-flow-col gap-4">
@@ -42,14 +43,15 @@ const Footer = () => {
   </nav>
   <nav>
     <h6 className="font-bold text-white uppercase text-lg">Contact</h6> 
-    <a className="text-white ">Email: tastehub@gmail.com</a>
-    <a className="text-white ">Phone: 003243243204</a>
-    <a className="text-white ">Address: Dhaka, Bangladesh</a>
+    <a className="text-white text-lg">Email: tastehub@gmail.com</a>
+    <a className="text-white text-lg">Phone: 003243243204</a>
+    <a className="text-white text-lg">Address: Dhaka, Bangladesh</a>
   </nav>
 </footer> 
 <footer className="px-10 py-4 w-full">
         <p className='text-center w-full text-gray-400'>TasteHub © 2024 All Rights Reserved.</p>
 </footer>
+            </div>
         </div>
     );
 };

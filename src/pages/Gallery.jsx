@@ -5,6 +5,7 @@ import { useLoaderData, useLocation, useNavigate} from 'react-router-dom';
 import axios from 'axios'
 import { toast, ToastContainer } from 'react-toastify';
 import {motion} from 'framer-motion'
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const Gallery = () => {
     const {userLoggedIn} = useContext(AuthContext)
@@ -42,7 +43,11 @@ const Gallery = () => {
 
     return (
         <div>
-           
+                 <HelmetProvider>
+                <Helmet>
+                    <title>TasteHub || Gallery</title>
+                </Helmet>
+            </HelmetProvider>
               <div className="bg-[linear-gradient(to_top,rgba(0,0,0,0.4),rgba(0,0,0,0)),linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0)),url('/images/foodGallery.jpg')] bg-no-repeat bg-cover flex justify-center items-center gap-10 h-[70vh] w-full">
                 <h1 className='text-5xl font-bold'>Gallery</h1>
             </div>

@@ -5,6 +5,7 @@ import { AuthContext } from '../providers/AuthProvider';
 import Loading from './Loading';
 import { ToastContainer } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 
 const MyFoodItems = () => {
@@ -44,6 +45,11 @@ const FoodItem = ({item})=>{
     const {foodName,foodImage,foodCategory,foodOrigin,price,quantity,_id} = item
     return(
         <div className="flex bg-base-100 shadow-xl gap-5 border-2 p-4">
+             <HelmetProvider>
+        <Helmet>
+            <title>TasteHub || My Food Items</title>
+        </Helmet>
+    </HelmetProvider>
   <img src={foodImage} className='w-[200px] h-[250px] object-cover'/>
   <div className="flex flex-col w-full justify-between gap-4">
     <div className='flex flex-col justify-between h-full'>

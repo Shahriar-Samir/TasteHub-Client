@@ -13,7 +13,7 @@ const Home = () => {
         <div className='mt-52 w-11/12 max-w-[1200px] mx-auto'>
             <HelmetProvider>
                 <Helmet>
-                    <title>|| Home</title>
+                    <title>TasteHub || Home</title>
                 </Helmet>
             </HelmetProvider>
             <div>

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const FoodDetails = () => {
     const {data} = useLoaderData()
@@ -8,6 +9,11 @@ const FoodDetails = () => {
     const {foodName,foodImage,_id,foodCategory,foodOrigin,price,quantity,description,name} = data
     return (
         <div className='h-[120vh] w-11/12 max-w-[1200px] mx-auto flex justify-center items-center'>
+              <HelmetProvider>
+                <Helmet>
+                    <title>TasteHub || Food Details</title>
+                </Helmet>
+            </HelmetProvider>
             <div className='h-[450px] w-full flex items-center justify-between gap-10 mt-10'>
             <img src={foodImage} className='w-1/2 object-cover h-full'/>
             <div className='w-2/4 h-full flex flex-col gap-4'>

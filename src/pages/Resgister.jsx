@@ -8,6 +8,7 @@ import buttonLoader from '../../public/animations/buttonLoading.json'
 import axios from 'axios';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import app from '../firebase/firebase';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 
 const Register = () => {
@@ -68,7 +69,11 @@ const Register = () => {
     
     return (
         <>
-     
+      <HelmetProvider>
+        <Helmet>
+            <title>TasteHub || Register</title>
+        </Helmet>
+    </HelmetProvider>
         <div className="h-[120vh] w-full  bg-[linear-gradient(to_top,rgba(0,0,0,0.4),rgba(0,0,0,0)),linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0)),url('/images/loginBanner.jpg')] bg-no-repeat bg-cover flex justify-center items-center gap-10">
                 <div className='md:w-1/3 flex justify-center items-center'>
 <form className="w-11/12 max-w-[350px] mt-32" onSubmit={submit}>

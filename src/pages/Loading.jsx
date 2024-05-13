@@ -1,4 +1,3 @@
-import React from 'react';
 import Lottie from 'lottie-react';
 import LoadingFood from '../../public/animations/loading.json'
 

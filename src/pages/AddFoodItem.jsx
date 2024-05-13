@@ -5,6 +5,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import Lottie from 'lottie-react';
 import buttonLoader from '../../public/animations/buttonLoading.json'
 import { useNavigate } from 'react-router-dom';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const AddFoodItem = () => {
     const {userLoggedIn} = useContext(AuthContext)
@@ -41,7 +42,11 @@ const AddFoodItem = () => {
     }
     return (
         <>
-        
+          <HelmetProvider>
+                <Helmet>
+                    <title>TasteHub || Add Food Item</title>
+                </Helmet>
+            </HelmetProvider>
         <div className="h-[150vh] w-full  bg-[linear-gradient(to_top,rgba(0,0,0,0.4),rgba(0,0,0,0)),linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0)),url('/images/foodCooking.jpeg')] bg-no-repeat bg-cover flex justify-center items-center gap-10 text-white">
           <form className="card-body bg-[#FFFFFF80] w-11/12 max-w-[500px] mt-32" onSubmit={submit}>
             <h1 className='text-center text-3xl font-bold'>Add a new food item</h1>

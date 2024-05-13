@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { ToastContainer, toast} from 'react-toastify';
 import axios from 'axios'
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 
 const AllFoods = () => {
@@ -25,7 +26,11 @@ const AllFoods = () => {
     
     return (
         <div className=''>
-           
+             <HelmetProvider>
+                <Helmet>
+                    <title>TasteHub || All Foods</title>
+                </Helmet>
+            </HelmetProvider>
             <div className="bg-[linear-gradient(to_top,rgba(0,0,0,0.4),rgba(0,0,0,0)),linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0)),url('/images/allFoods.jpg')] bg-no-repeat bg-cover flex justify-center items-center gap-10 h-[80vh]">
                 <h1 className='text-5xl font-bold'>All Food Items</h1>
             </div>
