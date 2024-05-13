@@ -71,7 +71,7 @@ const PurchaseItem = () => {
               <h1 className='text-xl font-bold'>{data.foodName}</h1>
               <img src={data.foodImage} className='object-cover w-11/12 mx-auto h-2/4'/>
             <div className='flex justify-between items-center w-full'>
-            <h1 className='text-xl font-bold text-[#C90B12]'><span className='text-white'>Price per serving:</span> ${data.price}</h1>
+            <h1 className='text-xl font-bold text-[gold]'><span className='text-white'>Price per serving:</span> ${data.price}</h1>
               <h1 className='text-xl font-bold text-[#C90B12]'><span className='text-white'>Quantity:</span> {data.quantity}</h1>
             </div>
            </div>
