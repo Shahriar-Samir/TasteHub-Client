@@ -65,22 +65,25 @@ export default AllFoods;
 
 
 const Card = ({item})=>{
-    const {foodName,foodImage,_id} = item
-    return (
-        <div className="max-w-sm rounded overflow-hidden bg-gray-600">
-  <img className="w-full" src={foodImage} />
-  <div className="px-6 py-4">
-    <div className="font-bold text-xl mb-2">{foodName}</div>
-    <p className="text-white text-base">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-    </p>
-    <Link to={`/foodDetails/${_id}`}>View Details</Link>
-  </div>
-  <div className="px-6 pt-4 pb-2">
-    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
-  </div>
-</div>
+    const {foodName,foodImage,foodCategory,price,_id,quantity} = item
+    return(
+        <div className="card bg-base-100 shadow-xl border-2 rounded-sm border-gray-300" >
+        <div className="p-5 flex flex-col justify-between" style={{background:"linear-gradient(to bottom,  rgba(0,0,0,0.2),  rgb(0,0,0,0.2)), url('"+foodImage+"')",height:"330px",backgroundSize:'cover',backgroundPosition:'center'}}>
+        <div className=''>
+        <div className='flex justify-between items-center'>
+        <h2 className="text-2xl font-bold">{foodName}</h2>
+        </div>
+        <p className='font-bold'>{foodCategory}</p>
+        </div>
+        <div className='flex flex-col'>
+        <p className='font-bold text-xl' style={{textShadow:'1px 1px 20px black'}}>Quantity: {quantity}</p>
+            <div className="flex items-center justify-between">
+            <p className='font-bold text-xl'  style={{textShadow:'1px 1px 20px black'}}>Price: <span className='text-[gold]'>${price}</span></p>
+      <Link to={`/foodDetails/${_id}`}><button className="btn bg-[#C90B12] hover:bg-[#8e282b] border-none text-white">View Details</button></Link>
+        </div>
+        </div>
+
+    </div>
+    </div>
     )
 }
