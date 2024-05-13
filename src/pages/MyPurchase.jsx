@@ -1,15 +1,18 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
+import { AuthContext } from '../providers/AuthProvider';
 
 const MyPurchases = () => {
     const {data} = useLoaderData()
+    const {userLoggedIn} = useContext(AuthContext)
     console.log(data)
 
     const deletePurchaseData = (id)=>{
+        const email = userLoggedIn?.email
         document.getElementById(id).style.display = 'none'
-        axios.delete(`http://localhost:5000/deletePurchaseItem/${id}`)
+        axios.delete(`http://localhost:5000/deletePurchaseItem/${id}`,{withCredentials:true, params:{email}})
         .then(res=>{
             toast.success('Purchased food Item deleted')
         })

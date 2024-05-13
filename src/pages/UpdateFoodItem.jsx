@@ -1,11 +1,13 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import Lottie from 'lottie-react';
 import buttonLoader from '../../public/animations/buttonLoading.json'
+import { AuthContext } from '../providers/AuthProvider';
 
 const UpdateFoodItem = () => {
+    const {userLoggedIn} = useContext(AuthContext)
     const {data} = useLoaderData()
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
@@ -20,8 +22,9 @@ const UpdateFoodItem = () => {
         const price = parseInt(form.price.value)
         const foodOrigin = form.foodOrigin.value
         const description = form.description.value
+        const email = userLoggedIn.email
 
-        axios.put(`http://localhost:5000/updateFood/${data._id}`,{foodName,foodImage,foodCategory,quantity,price,foodOrigin,description})
+        axios.put(`http://localhost:5000/updateFood/${data._id}`,{foodName,foodImage,foodCategory,quantity,price,foodOrigin,description,email}, {withCredentials:true})
         .then(res=>{
             setLoading(false)
             toast.success('Updated food item')

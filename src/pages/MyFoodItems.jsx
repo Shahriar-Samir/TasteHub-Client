@@ -13,7 +13,7 @@ const MyFoodItems = () => {
     const {userLoggedIn} = useContext(AuthContext)
     useEffect(()=>{
         setLoading(true)
-        axios.get(`http://localhost:5000/myFoods/${userLoggedIn.email}`)
+        axios.get(`http://localhost:5000/myFoods/${userLoggedIn.email}`,{withCredentials:true})
         .then(res=>{
             setLoading(false)
             setFoodsData(res.data)

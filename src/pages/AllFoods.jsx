@@ -14,7 +14,7 @@ const AllFoods = () => {
             e.preventDefault()
             const searchValue = e.target.search.value
             setResultTitle(`Results for : ${searchValue? searchValue : 'All'}`)
-            axios.get(`http://localhost:5000/searchFood/${searchValue===''? 'false' : searchValue}`)
+            axios.get(`http://localhost:5000/searchFood/${searchValue===''? 'false' : searchValue}`, {withCredentials:true})
             .then(res=>{
                 setFoodItems(res.data)
             })

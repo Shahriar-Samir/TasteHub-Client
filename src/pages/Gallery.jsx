@@ -16,7 +16,8 @@ const Gallery = () => {
             const name = userLoggedIn?.displayName
             const feedback = form.feedback.value
             const image = form.image.value
-            axios.post('http://localhost:5000/addFeedback', {name, feedback, image})
+            const email = userLoggedIn?.email
+            axios.post('http://localhost:5000/addFeedback', {name,email,feedback, image}, {withCredentials:true})
             .then(res=>{
                 toast.success('Feedback added successfully')
                 setTimeout(()=>{

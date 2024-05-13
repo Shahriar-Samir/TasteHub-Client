@@ -47,7 +47,7 @@ const Register = () => {
                             uid,
                             email,
                             displayName,
-                            photoURL})
+                            photoURL}, {withCredentials:true})
                     })
                 })
             })

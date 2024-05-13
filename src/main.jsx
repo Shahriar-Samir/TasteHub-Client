@@ -44,28 +44,28 @@ const router = createBrowserRouter([{
           path: '/allFoods',
           element: <AllFoods/>,
           loader:()=>{
-            return axios.get('http://localhost:5000/allFoods')
+            return axios.get('http://localhost:5000/allFoods', {withCredentials:true})
           }
         },
         {
           path: '/foodDetails/:id',
           element: <FoodDetails/>,
           loader: ({params})=>{
-            return axios.get(`http://localhost:5000/foodDetails/${params.id}`)
+            return axios.get(`http://localhost:5000/foodDetails/${params.id}`, {withCredentials:true})
           }
         },
         {
           path: '/purchaseItem/:id',
           element: <PrivateRoute><PurchaseItem/></PrivateRoute>,
           loader: ({params})=>{
-            return axios.get(`http://localhost:5000/foodDetails/${params.id}`)
+            return axios.get(`http://localhost:5000/foodDetails/${params.id}`, {withCredentials:true})
           }
         },
         {
           path: '/gallery',
           element: <Gallery/>,
           loader: ()=>{
-            return axios.get('http://localhost:5000/allFeedbacks')
+            return axios.get('http://localhost:5000/allFeedbacks', {withCredentials:true})
           }
         },
         {
@@ -76,7 +76,7 @@ const router = createBrowserRouter([{
           path: `/updateFoodItem/:id`,
           element: <UpdateFoodItem/>,
           loader:({params})=>{
-              return axios.get(`http://localhost:5000/foodDetails/${params.id}`)
+              return axios.get(`http://localhost:5000/foodDetails/${params.id}`, {withCredentials:true})
           }
         },
         {
@@ -87,7 +87,7 @@ const router = createBrowserRouter([{
           path: '/myPurchases/:email',
           element: <MyPurchases/>,
           loader: ({params})=>{
-             return axios(`http://localhost:5000/myPurchasedItems/${params.email}`)
+             return axios(`http://localhost:5000/myPurchasedItems/${params.email}`,{withCredentials:true})
           }
         },
         {

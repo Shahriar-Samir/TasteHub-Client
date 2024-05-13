@@ -41,7 +41,7 @@ const PurchaseItem = () => {
           const foodId = data._id
           const {foodImage,foodOrigin} = data
           const foodOwner = data.name
-          axios.post('http://localhost:5000/addPurchaseItem',{foodName,foodId,foodImage,price,quantity,name,email,purchaseDate,foodOrigin,foodOwner})
+          axios.post('http://localhost:5000/addPurchaseItem',{foodName,foodId,foodImage,price,quantity,name,email,purchaseDate,foodOrigin,foodOwner}, {withCredentials:true})
           .then(res=>{
               setLoading(false)
               toast.success('Item purchased successfully')
