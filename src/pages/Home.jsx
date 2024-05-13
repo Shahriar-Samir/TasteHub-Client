@@ -13,14 +13,15 @@ const Home = () => {
         document.querySelector('html').setAttribute('data-theme','dark')
     },[])
     return (
-        <div className='mt-52 w-11/12 max-w-[1200px] mx-auto'>
+        <div>
+            <Banner/>
+            <div className='w-11/12 max-w-[1200px] mx-auto mt-20'>
             <HelmetProvider>
                 <Helmet>
                     <title>TasteHub || Home</title>
                 </Helmet>
             </HelmetProvider>
             <div>
-                <Banner/>
                 <h1 className='text-2xl font-bold text-center text-[gold]'>Six Top Selling Foods</h1>
             <div className='grid grid-cols-3 gap-14 mt-14'>
                 {data.map(item=>{
@@ -33,6 +34,7 @@ const Home = () => {
             </div>
             <ChefsSpecial/>
             <GlobalGasronomy/>
+        </div>
         </div>
     );
 };
