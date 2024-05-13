@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Typewriter } from 'react-simple-typewriter'
 import { AuthContext } from '../providers/AuthProvider';
 import { toast, ToastContainer } from 'react-toastify';
@@ -13,6 +13,7 @@ import app from '../firebase/firebase';
 const Register = () => {
     const {signUp,updateUser,setLoadingSpinner,loadingSpinner} = useContext(AuthContext)
     const auth = getAuth(app)
+    const navigate = useNavigate()
     useEffect(()=>{
         document.querySelector('html').setAttribute('data-theme','light')
     },[])
@@ -36,6 +37,7 @@ const Register = () => {
                 .then(()=>{
                     setLoadingSpinner(false)
                     toast.success('Account created successfully')
+                    navigate('/')
                     onAuthStateChanged(auth,user=>{
                         const {
                             uid,
@@ -66,7 +68,7 @@ const Register = () => {
     
     return (
         <>
-     <ToastContainer toastStyle={{backgroundColor:'#00000080',color:'white'}}/>
+     
         <div className="h-[120vh] w-full  bg-[linear-gradient(to_top,rgba(0,0,0,0.4),rgba(0,0,0,0)),linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0)),url('/images/loginBanner.jpg')] bg-no-repeat bg-cover flex justify-center items-center gap-10">
                 <div className='md:w-1/3 flex justify-center items-center'>
 <form className="w-11/12 max-w-[350px] mt-32" onSubmit={submit}>

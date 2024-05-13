@@ -64,7 +64,7 @@ const PurchaseItem = () => {
 
     return (
        <div className='w-11/12 max-w-[1100px] mx-auto mt-48 h-[100vh] '>
-       <ToastContainer toastStyle={{backgroundColor:'#00000080',color:'white'}}/>
+       
         <h1 className='text-3xl font-bold text-center mb-14'>Purchase Food Item</h1>
          <div className='flex justify-between gap-10'>
            <div className='w-1/2 flex flex-col gap-3 items-start'>

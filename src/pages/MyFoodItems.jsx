@@ -23,7 +23,7 @@ const MyFoodItems = () => {
 
     return (
         <div>
-    <ToastContainer toastStyle={{backgroundColor:'#00000080',color:'white'}}/>
+    
            {loading? <div className='h-[100vh] flex justify-center items-center'>
                 <Loading/>
            </div> : <div> <h1 className='mt-40 text-center text-3xl font-bold'>My Food Items</h1>

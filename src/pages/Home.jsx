@@ -1,6 +1,7 @@
 import {useEffect } from 'react';
 import {Helmet, HelmetProvider} from 'react-helmet-async'
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
+
 
 const Home = () => {
     const {data} = useLoaderData()
@@ -9,16 +10,19 @@ const Home = () => {
         document.querySelector('html').setAttribute('data-theme','dark')
     },[])
     return (
-        <div>
+        <div className='mt-52 w-11/12 max-w-[1200px] mx-auto'>
             <HelmetProvider>
                 <Helmet>
                     <title>|| Home</title>
                 </Helmet>
             </HelmetProvider>
-            <div className='mx-auto w-11/12 max-w-[1200px] grid grid-cols-3'>
+            <div>
+                <h1 className='text-2xl font-bold text-center'>Six Top Selling Foods</h1>
+            <div className='grid grid-cols-3 gap-14 mt-14'>
                 {data.map(item=>{
                     return <Card key={item.key} item={item}/>
                 })}
+            </div>
             </div>
         </div>
     );
@@ -27,17 +31,22 @@ const Home = () => {
 export default Home;
 
 const Card = ({item})=>{
-    const {foodName,foodImage} = item
+    const {foodName,foodImage,foodCategory,price,_id} = item
     return(
-        <div className="card w-96 bg-base-100 shadow-xl">
-  <figure><img src={foodImage} /></figure>
-  <div className="card-body">
-    <h2 className="card-title">{foodName}</h2>
-    <p>If a dog chews shoes whose shoes does he choose?</p>
-    <div className="card-actions justify-end">
-      <button className="btn btn-primary">Buy Now</button>
+        <div className="card bg-base-100 shadow-xl" >
+        <div className="p-5 flex flex-col justify-between" style={{background:"linear-gradient(to bottom,  rgba(0,0,0,0.2),  rgb(0,0,0,0.2)), url('"+foodImage+"')",height:"330px",backgroundSize:'cover',backgroundPosition:'center'}}>
+        <div className=''>
+        <div className='flex justify-between items-center'>
+        <h2 className="text-2xl font-bold">{foodName}</h2>
+        </div>
+        <p className='font-bold'>{foodCategory}</p>
+        </div>
+            <div className="flex items-center justify-between mt-5">
+            <p className='font-bold text-xl'  style={{textShadow:'1px 1px 20px black'}}>Price: <span className='text-[gold]'>${price}</span></p>
+      <Link to={`/foodDetails/${_id}`}><button className="btn bg-[#C90B12] border-none text-white">View Details</button></Link>
+        </div>
+
     </div>
-  </div>
-</div>
+    </div>
     )
 }

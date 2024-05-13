@@ -50,7 +50,7 @@ const Gallery = () => {
                 {/* Open the modal using document.getElementById('ID').showModal() method */}
 <button className="btn text-white font-bold bg-[#C90B12] hover:bg-[#8e282b]" onClick={showModal}>Add <FaCirclePlus/></button>
 <dialog id="my_modal_5" className="modal modal-middle">
-<ToastContainer toastStyle={{backgroundColor:'#00000080',color:'white'}}/>
+
   <div className="rounded-lg p-5 w-11/12 max-w-[350px] bg-gray-700">
   <div className="modal-action m-0 ">
       <form method="dialog">

@@ -13,7 +13,7 @@ const Signin = () => {
     const {signIn,signInWithGoogle,signInWithFacebook,setLoadingSpinner,loadingSpinner} = useContext(AuthContext)
     const location = useLocation()
     const navigate = useNavigate()
-    console.log(location)
+    console.log(location.state)
     useEffect(()=>{
         document.querySelector('html').setAttribute('data-theme','light')
     },[])    
@@ -23,7 +23,12 @@ const Signin = () => {
         .then(()=>{
             setLoadingSpinner(false)
             toast.success('Logged in successfully')
-            navigate(location.state)
+            if(location.state){
+                 navigate(location.state)
+            }
+            else{
+                navigate('/')
+            }
         })
         .catch(()=>{
             setLoadingSpinner(false)
@@ -36,7 +41,12 @@ const Signin = () => {
         .then(()=>{
             setLoadingSpinner(false)
             toast.success('Logged in successfully')
-            navigate(location.state)
+            if(location.state){
+                 navigate(location.state)
+            }
+            else{
+                navigate('/')
+            }
         })
         .catch(()=>{
             setLoadingSpinner(false)
@@ -58,7 +68,12 @@ const Signin = () => {
         .then(()=>{
             setLoadingSpinner(false)
             toast.success('Logged in successfully')
-            navigate(location.state)
+            if(location.state){
+                 navigate(location.state)
+            }
+            else{
+                navigate('/')
+            }
             
         })
         .catch(err=>{
@@ -75,7 +90,7 @@ const Signin = () => {
 
     return (
         <>
-    <ToastContainer toastStyle={{backgroundColor:'#00000080',color:'white'}}/>
+    
         <div className="h-[100vh] w-full  bg-[linear-gradient(to_top,rgba(0,0,0,0.4),rgba(0,0,0,0)),linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0)),url('/images/loginBanner.jpg')] bg-no-repeat bg-cover flex justify-center items-center gap-10">
                 <div className='md:w-1/3 flex justify-center items-center'>
 <form className="w-11/12 max-w-[300px] mt-20" onSubmit={submit}>

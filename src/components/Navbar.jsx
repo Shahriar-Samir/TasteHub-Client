@@ -4,17 +4,20 @@ import { AuthContext } from '../providers/AuthProvider';
 import profileLoading from '../../public/animations/profileLoading.json'
 import buttonLoading from '../../public/animations/buttonLoading.json'
 import Lottie from 'lottie-react';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Navbar = () => {
   const {loadingSpinner,userLoggedIn,signOutUser} = useContext(AuthContext)
   
   function logOut(){
       signOutUser()
-      .then(()=> toast.success('Signed Out'))
+      .then(()=>{
+        toast.success('Signed Out')
+     })
       .catch(()=>{
         toast.error('Something went wrong')
       })
+
   }
 
   return (
@@ -38,7 +41,7 @@ const Navbar = () => {
         <li><Link to={`/myPurchases/${userLoggedIn.email}`}>My ordered food items</Link></li>
       </ul>
     </div>
-    <button className='text-white py-2 w-[80px] absolute text-center bottom-[-45px] right-[-15px] rounded-md text-sm bg-[#C90B12]' onClick={signOutUser}>Log Out</button>
+    <button className='text-white py-2 w-[80px] absolute text-center bottom-[-45px] right-[-15px] rounded-md text-sm bg-[#C90B12]' onClick={logOut}>Log Out</button>
     </div>   : <Link to='/signin' className="btn">Sign In</Link>}
       </div>
       </div>
@@ -77,6 +80,7 @@ const Navbar = () => {
     </div>
   </div>
 </div>
+<ToastContainer toastStyle={{backgroundColor:'#00000080',color:'white'}}/>
     </div>
   );
 };
