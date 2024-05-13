@@ -1,6 +1,7 @@
 import {useEffect } from 'react';
 import {Helmet, HelmetProvider} from 'react-helmet-async'
 import { Link, useLoaderData } from 'react-router-dom';
+import ChefsSpecial from '../components/ChefsSpecial';
 
 
 const Home = () => {
@@ -27,6 +28,7 @@ const Home = () => {
             <Link to='/allFoods' ><button className="btn bg-[#C90B12] hover:bg-[#8e282b] border-none px-6 font-bold text-white">View All Foods</button></Link>
             </div>
             </div>
+            <ChefsSpecial/>
         </div>
     );
 };
@@ -48,7 +50,6 @@ const Card = ({item})=>{
             <p className='font-bold text-xl'  style={{textShadow:'1px 1px 20px black'}}>Price: <span className='text-[gold]'>${price}</span></p>
       <Link to={`/foodDetails/${_id}`}><button className="btn bg-[#C90B12] hover:bg-[#8e282b] border-none text-white">View Details</button></Link>
         </div>
-
     </div>
     </div>
     )
