@@ -15,6 +15,8 @@ const PurchaseItem = () => {
   console.log(typeof data.price)
     const [time,setTime] = useState(new Date())
 
+  console.log(data.email)
+
     useEffect(()=>{
         setInterval(()=> setTime(new Date()),1000)
     },[])
@@ -43,7 +45,6 @@ const PurchaseItem = () => {
           const foodOwner = data.name
           axios.post('http://localhost:5000/addPurchaseItem',{foodName,foodId,foodImage,price,quantity,name,email,purchaseDate,foodOrigin,foodOwner}, {withCredentials:true})
           .then(res=>{
-              setLoading(false)
               toast.success('Item purchased successfully')
               setTimeout(()=>{
                   navigate(`/myPurchases/${userLoggedIn.email}`)
@@ -118,7 +119,13 @@ const PurchaseItem = () => {
 
             </div>  
         <div className="form-control mt-6">
-         {loading?  <button className="btn-disabled border rounded-md bg-transparent border-[#C90B12] flex justify-center items-center"><Lottie animationData={buttonLoader} loop={true} className='w-[50px]'/></button>:  <button className="btn border-0 text-white bg-[#C90B12] hover:bg-[#8e282b]">Purchase</button>}
+         { data.email === userLoggedIn.email? <div className='flex flex-col justify-center'>
+          <span className='font-bold text-[red]'>You can't purchase your own food item</span>
+          <button disabled className="mt-1 btn text-white bg-[#C90B12]">Purchase</button>
+         </div> : data.quantity === 0 ? <div className='flex flex-col justify-center'>
+          <span className='font-bold text-[red]'>Item is not available</span>
+          <button disabled className="mt-1 btn text-white bg-[#C90B12]">Purchase</button>
+         </div> : loading?  <button className="btn-disabled border rounded-md bg-transparent border-[#C90B12] flex justify-center items-center"><Lottie animationData={buttonLoader} loop={true} className='w-[50px]'/></button>:  <button className="btn border-0 text-white bg-[#C90B12] hover:bg-[#8e282b]">Purchase</button>}
         </div>
       </form>
           </div>

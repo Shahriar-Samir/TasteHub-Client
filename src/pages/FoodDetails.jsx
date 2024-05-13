@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../providers/AuthProvider';
 
 const FoodDetails = () => {
     const {data} = useLoaderData()
+    const {userLoggedIn} = useContext(AuthContext)
     const {foodName,foodImage,_id,foodCategory,foodOrigin,price,quantity,description,name} = data
     return (
         <div className='h-[120vh] w-11/12 max-w-[1200px] mx-auto flex justify-center items-center'>
             <div className='h-[450px] w-full flex items-center justify-between gap-10 mt-10'>
             <img src={foodImage} className='w-1/2 object-cover h-full'/>
             <div className='w-2/4 h-full flex flex-col gap-4'>
-                <p className='font-bold text-sm'>Added by: {name}</p>
+                <p className='font-bold text-sm'>Added by: {name} {data.email === userLoggedIn?.email? '(You)' : ''}</p>
                 <p className='text-2xl font-bold'>{foodName}</p>
                 <p className='text-xl'>{description}</p>
                 <p className='text-xl font-bold'>Food Category: {foodCategory}</p>
