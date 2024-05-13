@@ -24,7 +24,7 @@ const AllFoods = () => {
     }
     
     return (
-        <div>
+        <div className=''>
            
             <div className="bg-[linear-gradient(to_top,rgba(0,0,0,0.4),rgba(0,0,0,0)),linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0)),url('/images/allFoods.jpg')] bg-no-repeat bg-cover flex justify-center items-center gap-10 h-[80vh]">
                 <h1 className='text-5xl font-bold'>All Food Items</h1>
@@ -44,7 +44,7 @@ const AllFoods = () => {
                 </div>
             </form>
             <div className='w-11/12 max-w-[1200px] mx-auto mt-5'>
-                <p className='text-center'>{resultTitle}</p>
+                <p className='text-center text-lg font-bold'>{resultTitle}</p>
             </div>
             {foodItems.length > 0 ? <div className='w-11/12 mx-auto max-w-[1200px] grid grid-cols-3 gap-10 mt-10'>
                 {foodItems.map(item=>{

@@ -74,7 +74,7 @@ const router = createBrowserRouter([{
         },
         {
           path: `/updateFoodItem/:id`,
-          element: <UpdateFoodItem/>,
+          element: <PrivateRoute><UpdateFoodItem/></PrivateRoute>,
           loader:({params})=>{
               return axios.get(`http://localhost:5000/foodDetails/${params.id}`, {withCredentials:true})
           }
@@ -85,14 +85,14 @@ const router = createBrowserRouter([{
         },
         {
           path: '/myPurchases/:email',
-          element: <MyPurchases/>,
+          element: <PrivateRoute><MyPurchases/></PrivateRoute>,
           loader: ({params})=>{
              return axios(`http://localhost:5000/myPurchasedItems/${params.email}`,{withCredentials:true})
           }
         },
         {
           path: '/purchaseItem',
-          element: <PurchaseItem/>
+          element: <PrivateRoute><PurchaseItem/></PrivateRoute>
         }
       ]
 }])
