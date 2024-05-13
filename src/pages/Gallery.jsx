@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaCirclePlus } from "react-icons/fa6";
 import { AuthContext } from '../providers/AuthProvider';
 import { useLoaderData, useLocation, useNavigate} from 'react-router-dom';
 import axios from 'axios'
 import { toast, ToastContainer } from 'react-toastify';
+import {motion} from 'framer-motion'
 
 const Gallery = () => {
     const {userLoggedIn} = useContext(AuthContext)
@@ -87,9 +88,9 @@ const Gallery = () => {
             </div>
         <div  className='mt-10 mx-auto w-11/12 max-w-[1200px] '>
           <h1 className='text-xl font-bold text-center'>All the feedbacks</h1>
-          <div className='grid grid-cols-3 mt-12'>
+          <div className='grid grid-cols-3 gap-10 mt-12'>
               {data.map(item=>{
-                return <p>{item.name}</p>
+                return <Card key={item._id} item={item}/>
               })}
             </div>
         </div>
@@ -98,3 +99,30 @@ const Gallery = () => {
 };
 
 export default Gallery;
+
+
+const Card = ({item})=>{
+  const {name,feedback,image} = item
+  const [position,setPostion] = useState(500)
+  const [opacity,setOpacity] = useState(1)
+
+  const showAll = ()=>{
+      setPostion(0)
+      setOpacity(0.5)
+  }
+  const hideAll = ()=>{
+      setPostion(500)
+      setOpacity(1)
+  }
+
+  return(
+      <motion.div className="shadow-xl h-[300px] border-2 rounded-sm overflow-hidden relative" onMouseEnter={showAll} onMouseLeave={hideAll}>
+      <motion.img src={image} className='h-full w-full object-cover' initial={{opacity:opacity}} animate={{opacity:opacity}}/>
+      <motion.div initial={{x:0}} animate={{x:position}} transition={{duration:1}} className='w-10/12 flex justify-center flex-col h-full absolute z-10 inset-9'>
+      <h2 className="text-2xl font-bold" style={{textShadow:'1px 1px 20px black'}}>{name}</h2>
+      <p  className='font-semibold'style={{textShadow:'1px 1px 20px black'}}>{feedback}</p>
+      </motion.div>
+
+  </motion.div>
+  )
+}
