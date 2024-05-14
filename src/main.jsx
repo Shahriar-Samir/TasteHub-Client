@@ -44,7 +44,7 @@ const router = createBrowserRouter([{
           path: '/allFoods',
           element: <AllFoods/>,
           loader:()=>{
-            return axios.get('https://assignment-11-server-alpha-one.vercel.app/allFoods', {withCredentials:true})
+            return axios.get('https://assignment-11-server-alpha-one.vercel.app/allFoodsCount', {withCredentials:true})
           }
         },
         {
@@ -90,10 +90,6 @@ const router = createBrowserRouter([{
              return axios(`https://assignment-11-server-alpha-one.vercel.app/myPurchasedItems/${params.email}`,{withCredentials:true})
           }
         },
-        {
-          path: '/purchaseItem',
-          element: <PrivateRoute><PurchaseItem/></PrivateRoute>
-        }
       ]
 }])
 

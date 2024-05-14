@@ -8,9 +8,10 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const AllFoods = () => {
     const {data} = useLoaderData()
-    const [foodItems,setFoodItems] = useState(data)
+    const {count} = data
+    const [foodItems,setFoodItems] = useState([])
     const [resultTitle,setResultTitle] = useState('Results for : All')
-
+    const [currentPage, setCurrentPage] = useState(0)
     const searchItems = (e)=>{
             e.preventDefault()
             const searchValue = e.target.search.value
@@ -23,9 +24,33 @@ const AllFoods = () => {
                 toast.error('Something went wrong')
             })
     }
+
+    const itemsPerPage = 9
+    const numbersOfPages = Math.ceil(count/ itemsPerPage) 
+    const pages = [...Array(numbersOfPages).keys()]
+
+
+    const previous = ()=>{
+        if(currentPage > 0){
+            setCurrentPage(currentPage-1)
+        }
+    }
+    const next = ()=>{
+        if(currentPage < (numbersOfPages-1)){
+            setCurrentPage(currentPage+1)
+        }
+    }
+
     useEffect(()=>{
         document.querySelector('html').setAttribute('data-theme','dark')
-    },[])
+        axios.get('https://assignment-11-server-alpha-one.vercel.app/allFoods', {withCredentials:true, params:{page:currentPage, size:itemsPerPage}})
+        .then(res=>{
+            setFoodItems(res.data)
+        })
+        .catch(()=>{
+            toast.error('Something went wrong')
+        })
+    },[currentPage,itemsPerPage])
     
     return (
         <div className='mb-28'>
@@ -54,12 +79,44 @@ const AllFoods = () => {
             <div className='w-11/12 max-w-[1200px] mx-auto mt-5'>
                 <p className='text-center text-lg font-bold'>{resultTitle}</p>
             </div>
-            {foodItems.length > 0 ? <div className='w-11/12 mx-auto max-w-[1200px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10'>
+            {foodItems.length > 0 ? <div>
+                <div className='w-11/12 mx-auto max-w-[1200px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10'>
                 {foodItems.map(item=>{
                     return <Card key={item._id} item={item}/>
                 })}
-            </div> : <div className='h-[80vh] mt-10'>
+            </div>
+            <div className='w-full flex justify-center mt-10'>
+            <div className="join" data-theme='light'>
+                <button className="join-item btn" onClick={previous}>Previous</button>
+            {
+                pages.map(page=>{
+                    if(page === currentPage){
+                        return <button key={page} onClick={()=> setCurrentPage(page)} className="join-item btn bg-[black] text-white">{page}</button>
+                    }
+                    else{
+                        return <button key={page} onClick={()=> setCurrentPage(page)} className="join-item btn">{page}</button>
+                    }
+                })
+            }
+            <button className="join-item btn" onClick={next}>Next</button>
+            </div>
+            </div>
+            </div> : <div className='h-[80vh] mt-10 flex flex-col justify-between items-center'>
             <p className='text-xl text-center'>No items found</p>
+            <div className="join" data-theme='light'>
+                <button className="join-item btn" onClick={previous}>Previous</button>
+            {
+                pages.map(page=>{
+                    if(page === currentPage){
+                        return <button key={page} onClick={()=> setCurrentPage(page)} className="join-item btn bg-[black] text-white">{page}</button>
+                    }
+                    else{
+                        return <button key={page} onClick={()=> setCurrentPage(page)} className="join-item btn">{page}</button>
+                    }
+                })
+            }
+            <button className="join-item btn" onClick={next}>Next</button>
+            </div>
                 </div>}
             </div>
         </div>
