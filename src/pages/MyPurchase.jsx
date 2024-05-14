@@ -32,10 +32,10 @@ const MyPurchases = () => {
             <title>TasteHub || My Purchases</title>
         </Helmet>
     </HelmetProvider>
-            <div className="overflow-x-auto mt-20">
-                <div><button>Back </button></div>
+            <div className="overflow-x-auto mt-20 min-h-[60vh]">
             <h1 className='text-center text-2xl font-bold'>My Purchased Items</h1>
-  <table className="table mt-4">
+  <div>{
+    data.length > 0 ? <table className="table mt-4">
     {/* head */}
     <thead>
       <tr>
@@ -50,7 +50,6 @@ const MyPurchases = () => {
     </thead>
     <tbody>
     {data.map(item=>{
-        const {foodName,food} = item
         return  <tr key={item._id} id={item._id}>
         <td>
           <div className="flex items-center gap-3">
@@ -84,7 +83,9 @@ const MyPurchases = () => {
     })}
     </tbody>
 
-  </table>
+  </table> : <p className='text-lg text-center mt-10'>You haven't purchased any item</p>
+    
+    }</div>
 </div>
         </div>
     );
