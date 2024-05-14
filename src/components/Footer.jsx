@@ -2,9 +2,9 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div className='mt-20 bg-[#414141]'>
+        <div className='bg-[#414141]'>
             <div className='w-11/12 mx-auto'>
-            <footer className="footer px-10 py-4 border-t text-base-content border-base-300">
+            <footer className="footer px-10 py-4 border-none">
   <aside className="items-center grid-flow-col gap-5">
     <div className='flex flex-col items-center'>
     <img src='/icons/icon.png'/>

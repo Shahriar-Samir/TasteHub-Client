@@ -74,9 +74,9 @@ const Register = () => {
             <title>TasteHub || Register</title>
         </Helmet>
     </HelmetProvider>
-        <div className="h-[120vh] w-full  bg-[linear-gradient(to_top,rgba(0,0,0,0.4),rgba(0,0,0,0)),linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0)),url('/images/loginBanner.jpg')] bg-no-repeat bg-cover flex justify-center items-center gap-10">
-                <div className='md:w-1/3 flex justify-center items-center'>
-<form className="w-11/12 max-w-[350px] mt-32" onSubmit={submit}>
+        <div className="h-[150vh] lg:h-[120vh] w-full  bg-[linear-gradient(to_top,rgba(0,0,0,0.4),rgba(0,0,0,0)),linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0)),url('/images/banner.jpg')] bg-no-repeat bg-cover flex justify-center flex-col-reverse lg:flex-row items-center gap-10">
+                <div className='lg:w-1/3 flex justify-center items-center'>
+<form className="w-11/12 max-w-[350px]" onSubmit={submit}>
     <h1 className='text-3xl mb-5 font-bold text-center w-full'>Create a new account</h1>
     <div className="mb-5 w-full ">
     <label htmlFor="name" className="block mb-2 text-sm font-medium text-white ">User name</label>
@@ -102,8 +102,8 @@ const Register = () => {
 
                 </div>
                 <div className="flex flex-col">
-                        <div className='flex flex-col gap-4 mt-10'>
-                        <h1 className='text-6xl font-bold max-w-[600px] text-center'><Typewriter words={['Join TasteHub']} typeSpeed={50}  cursor={true} cursorStyle={'_'}/></h1>
+                        <div className='flex flex-col items-center gap-4'>
+                        <h1 className='text-3xl lg:text-6xl font-bold max-w-[600px] text-center'><Typewriter words={['Join TasteHub']} typeSpeed={50}  cursor={true} cursorStyle={'_'}/></h1>
                             <p className='text-center w-11/12 max-w-[600px]'>Become a part of the TasteHub community today. Register to unlock a world of culinary possibilities, from adding your own recipes to ordering delicious meals. Start your culinary adventure with us and savor every moment.</p>
                         </div>
                 </div>

@@ -96,9 +96,9 @@ const Signin = () => {
             <title>TasteHub || Sign In</title>
         </Helmet>
     </HelmetProvider>
-        <div className="h-[100vh] w-full  bg-[linear-gradient(to_top,rgba(0,0,0,0.4),rgba(0,0,0,0)),linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0)),url('/images/loginBanner.jpg')] bg-no-repeat bg-cover flex justify-center items-center gap-10">
-                <div className='md:w-1/3 flex justify-center items-center'>
-<form className="w-11/12 max-w-[300px] mt-20" onSubmit={submit}>
+        <div className="h-[140vh] lg:h-[100vh] w-full  bg-[linear-gradient(to_top,rgba(0,0,0,0.4),rgba(0,0,0,0)),linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0)),url('/images/banner.jpg')] bg-no-repeat bg-cover flex justify-center items-center flex-col-reverse lg:flex-row-reverse gap-5 lg:gap-10">
+                <div className='lg:w-1/3 flex justify-center items-center'>
+<form className="w-11/12 max-w-[300px] mt-5 lg:mt-20" onSubmit={submit}>
     <h1 className='text-3xl mb-5 font-bold text-center'>Sign In With</h1>
     <div className='flex justify-center gap-10 items-center'>
         <FcGoogle className='text-2xl' role='button' onClick={signInWithGoogleAccount}/>
@@ -125,9 +125,9 @@ const Signin = () => {
 </form>
 
                 </div>
-                <div className="flex flex-col">
-                        <div className='flex flex-col gap-4 md:'>
-                        <h1 className='text-6xl font-bold max-w-[600px] text-center mt-20'><Typewriter words={['Welcome back to TasteHub!']} typeSpeed={50}  cursor={true} cursorStyle={'_'}/></h1>
+                <div className="flex justify-center items-center">
+                        <div className='flex flex-col items-center gap-4 md:'>
+                        <h1 className='text-3xl lg:text-6xl font-bold max-w-[600px] text-center'><Typewriter words={['Welcome back to TasteHub!']} typeSpeed={50}  cursor={true} cursorStyle={'_'}/></h1>
                             <p className='text-center w-11/12 max-w-[600px]'>Embark on a personalized culinary journey with TasteHub. Sign in to manage your food inventory, explore new recipes, and track your orders seamlessly. From adding your favorite dishes to discovering new flavors, your profile is your gateway to a world of culinary delight</p>
                         </div>
                 </div>

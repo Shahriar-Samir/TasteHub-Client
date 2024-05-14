@@ -25,18 +25,18 @@ const AllFoods = () => {
     }
     
     return (
-        <div className=''>
+        <div className='mb-28'>
              <HelmetProvider>
                 <Helmet>
                     <title>TasteHub || All Foods</title>
                 </Helmet>
             </HelmetProvider>
-            <div className="bg-[linear-gradient(to_top,rgba(0,0,0,0.4),rgba(0,0,0,0)),linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0)),url('/images/allFoods.jpg')] bg-no-repeat bg-cover flex justify-center items-center gap-10 h-[80vh]">
-                <h1 className='text-5xl font-bold'>All Food Items</h1>
+            <div className="bg-[linear-gradient(to_top,rgba(0,0,0,0.4),rgba(0,0,0,0)),linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0)),url('/images/allFoods.jpg')] bg-no-repeat bg-cover flex justify-center items-center h-[80vh]">
+                <h1 className='text-4xl lg:text-5xl text-center font-bold'>All Food Items</h1>
             </div>
 
             <div className='mt-14'>
-            <form className="max-w-md mx-auto" onSubmit={searchItems}>   
+            <form className="w-11/12 max-w-md mx-auto" onSubmit={searchItems}>   
                 <label htmlFor="default-search" className="mb-2 text-sm font-medium text-white sr-only ">Search</label>
                 <div className="relative">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -51,7 +51,7 @@ const AllFoods = () => {
             <div className='w-11/12 max-w-[1200px] mx-auto mt-5'>
                 <p className='text-center text-lg font-bold'>{resultTitle}</p>
             </div>
-            {foodItems.length > 0 ? <div className='w-11/12 mx-auto max-w-[1200px] grid grid-cols-3 gap-10 mt-10'>
+            {foodItems.length > 0 ? <div className='w-11/12 mx-auto max-w-[1200px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10'>
                 {foodItems.map(item=>{
                     return <Card key={item._id} item={item}/>
                 })}

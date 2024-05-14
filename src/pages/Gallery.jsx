@@ -42,14 +42,14 @@ const Gallery = () => {
     }
 
     return (
-        <div>
+        <div className='mb-28'>
                  <HelmetProvider>
                 <Helmet>
                     <title>TasteHub || Gallery</title>
                 </Helmet>
             </HelmetProvider>
               <div className="bg-[linear-gradient(to_top,rgba(0,0,0,0.4),rgba(0,0,0,0)),linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0)),url('/images/foodGallery.jpg')] bg-no-repeat bg-cover flex justify-center items-center gap-10 h-[70vh] w-full">
-                <h1 className='text-5xl font-bold'>Gallery</h1>
+                <h1 className='text-4xl lg:tex-5xl font-bold'>Gallery</h1>
             </div>
             <div className='flex justify-center mt-10'>
            
@@ -93,7 +93,7 @@ const Gallery = () => {
             </div>
         <div  className='mt-10 mx-auto w-11/12 max-w-[1200px] '>
           <h1 className='text-xl font-bold text-center'>All the feedbacks</h1>
-          <div className='grid grid-cols-3 gap-10 mt-12'>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-12'>
               {data.map(item=>{
                 return <Card key={item._id} item={item}/>
               })}

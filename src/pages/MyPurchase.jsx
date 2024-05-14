@@ -23,13 +23,13 @@ const MyPurchases = () => {
     }
 
     return (
-        <div className='w-11/12 max-w-[1000px] mx-auto'>
+        <div className='w-11/12 max-w-[1200px] mx-auto mb-28'>
                  <HelmetProvider>
         <Helmet>
             <title>TasteHub || My Purchases</title>
         </Helmet>
     </HelmetProvider>
-            <div className="overflow-x-auto mt-40">
+            <div className="overflow-x-auto mt-20">
                 <div><button>Back </button></div>
             <h1 className='text-center text-2xl font-bold'>My Purchased Items</h1>
   <table className="table mt-4">
@@ -57,22 +57,22 @@ const MyPurchases = () => {
               </div>
             </div>
             <div>
-              <div className="font-bold">{item.foodName}</div>
-              <div className="text-sm opacity-50">{item.foodOrigin}</div>
+              <div className="font-bold text-xl">{item.foodName}</div>
+              <div className="opacity-70 text-lg">{item.foodOrigin}</div>
             </div>
           </div>
         </td>
         <td>
-          <span className="">{item.foodOwner}</span>
+          <span className="text-white text-lg">{item.foodOwner}</span>
         </td>
         <td>
-          <span className="">{item.price}</span>
+          <span className="text-white text-lg">{item.price}</span>
         </td>
         <td>
-          <span className="">{item.quantity}</span>
+          <span className="text-white text-lg">{item.quantity}</span>
         </td>
         <td>
-          <span className="">{item.purchaseDate}</span>
+          <span className="text-white text-lg">{item.purchaseDate}</span>
         </td>
         <td>
           <span onClick={()=>{deletePurchaseData(item._id)}} className="btn bg-[#C90B12] hover:bg-[#8e282b] text-white">Delete</span>

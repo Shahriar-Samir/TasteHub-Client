@@ -13,7 +13,7 @@ const Home = () => {
         document.querySelector('html').setAttribute('data-theme','dark')
     },[])
     return (
-        <div>
+        <div className='mb-28'>
             <Banner/>
             <div className='w-11/12 max-w-[1200px] mx-auto mt-20'>
             <HelmetProvider>
@@ -23,7 +23,7 @@ const Home = () => {
             </HelmetProvider>
             <div>
                 <h1 className='text-2xl font-bold text-center text-[gold]'>Six Top Selling Foods</h1>
-            <div className='grid grid-cols-3 gap-14 mt-14'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 mt-14'>
                 {data.map(item=>{
                     return <Card key={item.key} item={item}/>
                 })}
