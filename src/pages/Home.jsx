@@ -8,7 +8,6 @@ import Banner from '../components/Banner';
 
 const Home = () => {
     const {data} = useLoaderData()
-    console.log(data)
     useEffect(()=>{
         document.querySelector('html').setAttribute('data-theme','dark')
     },[])

@@ -36,10 +36,13 @@ const AddFoodItem = () => {
         })
         .catch(err=>{
             setLoading(false)
-            console.log(err)
             toast.error('Something went wrong')
         })
     }
+
+    useEffect(()=>{
+      document.querySelector('html').setAttribute('data-theme','dark')
+  },[])
     return (
         <>
           <HelmetProvider>

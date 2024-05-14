@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
@@ -35,10 +35,14 @@ const UpdateFoodItem = () => {
         })
         .catch(err=>{
             setLoading(false)
-            console.log(err)
             toast.error('Something went wrong')
         })
     }
+
+    useEffect(()=>{
+      document.querySelector('html').setAttribute('data-theme','dark')
+  },[])
+
     return (
         <>
          <HelmetProvider>

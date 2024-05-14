@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import { AuthContext } from '../providers/AuthProvider';
@@ -8,7 +8,10 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 const MyPurchases = () => {
     const {data} = useLoaderData()
     const {userLoggedIn} = useContext(AuthContext)
-    console.log(data)
+
+    useEffect(()=>{
+      document.querySelector('html').setAttribute('data-theme','dark')
+  },[])
 
     const deletePurchaseData = (id)=>{
         const email = userLoggedIn?.email

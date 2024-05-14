@@ -13,6 +13,8 @@ const MyFoodItems = () => {
     const [loading,setLoading] = useState(true)
     const {userLoggedIn} = useContext(AuthContext)
     useEffect(()=>{
+
+            document.querySelector('html').setAttribute('data-theme','dark')
         setLoading(true)
         axios.get(`https://assignment-11-server-alpha-one.vercel.app/myFoods/${userLoggedIn.email}`,{withCredentials:true})
         .then(res=>{

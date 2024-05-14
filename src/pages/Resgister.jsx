@@ -26,7 +26,6 @@ const Register = () => {
         const email = form.email.value
         const photo = form.photo.value
         const password = form.password.value
-        console.log(name, photo)
         if(password.length < 6 || /[A-Z]/.test(password) === false || /[a-z]/.test(password) === false){
             toast.error('Password must have an uppercase and lowercase letter with at least 6 characters')
         }

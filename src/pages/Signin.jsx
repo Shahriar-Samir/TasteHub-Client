@@ -14,7 +14,6 @@ const Signin = () => {
     const {signIn,signInWithGoogle,signInWithFacebook,setLoadingSpinner,loadingSpinner} = useContext(AuthContext)
     const location = useLocation()
     const navigate = useNavigate()
-    console.log(location.state)
     useEffect(()=>{
         document.querySelector('html').setAttribute('data-theme','light')
     },[])    

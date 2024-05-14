@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { ToastContainer, toast} from 'react-toastify';
 import axios from 'axios'
@@ -23,6 +23,9 @@ const AllFoods = () => {
                 toast.error('Something went wrong')
             })
     }
+    useEffect(()=>{
+        document.querySelector('html').setAttribute('data-theme','dark')
+    },[])
     
     return (
         <div className='mb-28'>

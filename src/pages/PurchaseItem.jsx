@@ -8,15 +8,13 @@ import { toast, ToastContainer } from 'react-toastify';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const PurchaseItem = () => {
+
     const {userLoggedIn} = useContext(AuthContext)
     const {data} = useLoaderData()
     const [loading, setLoading] = useState(false)
     const [priceValue,setPriceValue] = useState(data.price)
     const navigate = useNavigate()
-  console.log(typeof data.price)
     const [time,setTime] = useState(new Date())
-
-  console.log(data.email)
 
     useEffect(()=>{
         setInterval(()=> setTime(new Date()),1000)
@@ -63,6 +61,10 @@ const PurchaseItem = () => {
           const result = price*quantity
           setPriceValue(result)
 }
+
+useEffect(()=>{
+  document.querySelector('html').setAttribute('data-theme','dark')
+},[])
 
     return (
        <div className='w-11/12 max-w-[1100px] mx-auto mt-20 mb-20 flex justify-center flex-col'>

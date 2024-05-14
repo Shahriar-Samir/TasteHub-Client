@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
@@ -7,6 +7,11 @@ const FoodDetails = () => {
     const {data} = useLoaderData()
     const {userLoggedIn} = useContext(AuthContext)
     const {foodName,foodImage,_id,foodCategory,foodOrigin,price,quantity,description,name} = data
+
+    useEffect(()=>{
+        document.querySelector('html').setAttribute('data-theme','dark')
+    },[])
+    
     return (
         <div className='h-[170vh] md:h-[120vh] w-10/12 max-w-[1200px] mx-auto flex flex-col justify-center items-center'>
               <HelmetProvider>
