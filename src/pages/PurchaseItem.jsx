@@ -44,7 +44,7 @@ const PurchaseItem = () => {
           const foodId = data._id
           const {foodImage,foodOrigin} = data
           const foodOwner = data.name
-          axios.post('http://localhost:5000/addPurchaseItem',{foodName,foodId,foodImage,price,quantity,name,email,purchaseDate,foodOrigin,foodOwner}, {withCredentials:true})
+          axios.post('https://assignment-11-server-alpha-one.vercel.app/addPurchaseItem',{foodName,foodId,foodImage,price,quantity,name,email,purchaseDate,foodOrigin,foodOwner}, {withCredentials:true})
           .then(res=>{
               toast.success('Item purchased successfully')
               setTimeout(()=>{

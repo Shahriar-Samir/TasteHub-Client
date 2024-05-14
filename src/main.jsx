@@ -29,7 +29,7 @@ const router = createBrowserRouter([{
           path:'/',
           element: <Home/>,
           loader: ()=>{
-             return axios.get('http://localhost:5000/topPurchasedItems')
+             return axios.get('https://assignment-11-server-alpha-one.vercel.app/topPurchasedItems')
           }
         },
         {
@@ -44,28 +44,28 @@ const router = createBrowserRouter([{
           path: '/allFoods',
           element: <AllFoods/>,
           loader:()=>{
-            return axios.get('http://localhost:5000/allFoods', {withCredentials:true})
+            return axios.get('https://assignment-11-server-alpha-one.vercel.app/allFoods', {withCredentials:true})
           }
         },
         {
           path: '/foodDetails/:id',
           element: <FoodDetails/>,
           loader: ({params})=>{
-            return axios.get(`http://localhost:5000/foodDetails/${params.id}`, {withCredentials:true})
+            return axios.get(`https://assignment-11-server-alpha-one.vercel.app/foodDetails/${params.id}`, {withCredentials:true})
           }
         },
         {
           path: '/purchaseItem/:id',
           element: <PrivateRoute><PurchaseItem/></PrivateRoute>,
           loader: ({params})=>{
-            return axios.get(`http://localhost:5000/foodDetails/${params.id}`, {withCredentials:true})
+            return axios.get(`https://assignment-11-server-alpha-one.vercel.app/foodDetails/${params.id}`, {withCredentials:true})
           }
         },
         {
           path: '/gallery',
           element: <Gallery/>,
           loader: ()=>{
-            return axios.get('http://localhost:5000/allFeedbacks', {withCredentials:true})
+            return axios.get('https://assignment-11-server-alpha-one.vercel.app/allFeedbacks', {withCredentials:true})
           }
         },
         {
@@ -76,7 +76,7 @@ const router = createBrowserRouter([{
           path: `/updateFoodItem/:id`,
           element: <PrivateRoute><UpdateFoodItem/></PrivateRoute>,
           loader:({params})=>{
-              return axios.get(`http://localhost:5000/foodDetails/${params.id}`, {withCredentials:true})
+              return axios.get(`https://assignment-11-server-alpha-one.vercel.app/foodDetails/${params.id}`, {withCredentials:true})
           }
         },
         {
@@ -87,7 +87,7 @@ const router = createBrowserRouter([{
           path: '/myPurchases/:email',
           element: <PrivateRoute><MyPurchases/></PrivateRoute>,
           loader: ({params})=>{
-             return axios(`http://localhost:5000/myPurchasedItems/${params.email}`,{withCredentials:true})
+             return axios(`https://assignment-11-server-alpha-one.vercel.app/myPurchasedItems/${params.email}`,{withCredentials:true})
           }
         },
         {

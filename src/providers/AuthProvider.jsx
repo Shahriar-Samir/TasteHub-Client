@@ -20,10 +20,10 @@ const AuthProvider = ({children}) => {
                 setUserLoggedin(user)
                 setLoadingSpinner(false)
                 if(user){
-                    axios.post('http://localhost:5000/jwt',userData, {withCredentials:true})
+                    axios.post('https://assignment-11-server-alpha-one.vercel.app/jwt',userData, {withCredentials:true})
                 }
                 else{
-                    axios.post('http://localhost:5000/logout',userData, {withCredentials:true})
+                    axios.post('https://assignment-11-server-alpha-one.vercel.app/logout',userData, {withCredentials:true})
                 }
     })
     },[])

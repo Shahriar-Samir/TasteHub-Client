@@ -46,7 +46,7 @@ const Register = () => {
                             displayName,
                             photoURL} = user
 
-                        axios.post('http://localhost:5000/addUser',{
+                        axios.post('https://assignment-11-server-alpha-one.vercel.app/addUser',{
                             uid,
                             email,
                             displayName,

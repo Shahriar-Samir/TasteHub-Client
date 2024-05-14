@@ -25,7 +25,7 @@ const UpdateFoodItem = () => {
         const description = form.description.value
         const email = userLoggedIn.email
 
-        axios.put(`http://localhost:5000/updateFood/${data._id}`,{foodName,foodImage,foodCategory,quantity,price,foodOrigin,description,email}, {withCredentials:true})
+        axios.put(`https://assignment-11-server-alpha-one.vercel.app/updateFood/${data._id}`,{foodName,foodImage,foodCategory,quantity,price,foodOrigin,description,email}, {withCredentials:true})
         .then(res=>{
             setLoading(false)
             toast.success('Updated food item')

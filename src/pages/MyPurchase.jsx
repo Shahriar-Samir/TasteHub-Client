@@ -13,7 +13,7 @@ const MyPurchases = () => {
     const deletePurchaseData = (id)=>{
         const email = userLoggedIn?.email
         document.getElementById(id).style.display = 'none'
-        axios.delete(`http://localhost:5000/deletePurchaseItem/${id}`,{withCredentials:true, params:{email}})
+        axios.delete(`https://assignment-11-server-alpha-one.vercel.app/deletePurchaseItem/${id}`,{withCredentials:true, params:{email}})
         .then(res=>{
             toast.success('Purchased food Item deleted')
         })

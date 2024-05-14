@@ -19,7 +19,7 @@ const Gallery = () => {
             const feedback = form.feedback.value
             const image = form.image.value
             const email = userLoggedIn?.email
-            axios.post('http://localhost:5000/addFeedback', {name,email,feedback, image}, {withCredentials:true})
+            axios.post('https://assignment-11-server-alpha-one.vercel.app/addFeedback', {name,email,feedback, image}, {withCredentials:true})
             .then(res=>{
                 toast.success('Feedback added successfully')
                 setTimeout(()=>{

@@ -26,7 +26,7 @@ const AddFoodItem = () => {
         const description = form.description.value
         const purchased = 0
 
-        axios.post('http://localhost:5000/addFood',{foodName,foodImage,foodCategory,quantity,price,name,email,foodOrigin,description,purchased}, {withCredentials:true})
+        axios.post('https://assignment-11-server-alpha-one.vercel.app/addFood',{foodName,foodImage,foodCategory,quantity,price,name,email,foodOrigin,description,purchased}, {withCredentials:true})
         .then(res=>{
             setLoading(false)
             toast.success('+Added a new food item')
