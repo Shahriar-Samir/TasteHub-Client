@@ -4,13 +4,16 @@ const Footer = () => {
     return (
         <div className='bg-[#414141]'>
             <div className='w-11/12 mx-auto'>
-            <footer className="footer px-10 py-4 border-none">
+            <footer className="footer px-10 py-4 border-none flex items-center flex-col">
   <aside className="items-center grid-flow-col gap-5">
-    <div className='flex flex-col items-center'>
+   <div className='flex flex-col'>
+   <div className='flex flex-col items-center'>
     <img src='/icons/icon.png'/>
         <h1 className='text-2xl font-bold text-white'>TasteHub</h1>
     </div>
-    <p className='max-w-[300px] text-lg text-[#c4c4c4]'>Discover a world of flavors, curated by top chefs, and embark on a journey of gastronomic delight</p>
+    <p className='max-w-[300px] text-lg text-[#c4c4c4] text-center'>Discover a world of flavors, curated by top chefs, and embark on a journey of gastronomic delight</p>
+   </div>
+
   </aside> 
   <nav className="md:place-self-center md:justify-self-end">
     <div className="grid grid-flow-col gap-4">
@@ -20,7 +23,7 @@ const Footer = () => {
     </div>
   </nav>
 </footer>
-            <footer className="footer p-10 text-base-content">
+            <footer className="footer p-10 text-base-content grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4">
   <nav>
     <h6 className="font-bold text-white uppercase text-lg">Services</h6> 
     <a className="link link-hover text-white text-lg">Branding</a>
