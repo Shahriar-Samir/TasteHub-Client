@@ -126,7 +126,7 @@ const Card = ({item})=>{
   return(
       <motion.div className="shadow-xl h-[300px] border-2 rounded-sm overflow-hidden relative" onMouseEnter={showAll} onMouseLeave={hideAll}>
       <motion.img src={image} className='h-full w-full object-cover' initial={{opacity:opacity}} animate={{opacity:opacity}}/>
-      <motion.div initial={{x:0}} animate={{x:position}} transition={{duration:1}} className='w-10/12 flex justify-center flex-col h-full absolute z-10 inset-9'>
+      <motion.div initial={{x:0}} animate={{x:position}} transition={{duration:1}} className='w-10/12  h-[250px] absolute z-10 overflow-auto inset-6'>
       <h2 className="text-2xl font-bold" style={{textShadow:'1px 1px 20px black'}}>{name}</h2>
       <p  className='font-semibold'style={{textShadow:'1px 1px 20px black'}}>{feedback}</p>
       </motion.div>
