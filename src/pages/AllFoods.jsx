@@ -15,7 +15,7 @@ const AllFoods = () => {
     const searchItems = (e)=>{
             e.preventDefault()
             const searchValue = e.target.search.value
-            setResultTitle(`Results for : ${searchValue? searchValue : 'All'}`)
+            setResultTitle(`Results for : ${searchValue? searchValue : 'Nothing'}`)
             axios.get(`https://assignment-11-server-alpha-one.vercel.app/searchFood/${searchValue===''? 'false' : searchValue}`, {withCredentials:true})
             .then(res=>{
                 setFoodItems(res.data)
