@@ -42,8 +42,8 @@ const MyPurchases = () => {
         <th>
         </th>
         <th>Food owner</th>
-        <th>price</th>
-        <th>quantity</th>
+        <th>Price (USD)</th>
+        <th>Quantity</th>
         <th>Purchased Time</th>
         <th></th>
       </tr>
@@ -68,7 +68,7 @@ const MyPurchases = () => {
           <span className="text-white text-lg">{item.foodOwner}</span>
         </td>
         <td>
-          <span className="text-white text-lg">{item.price}</span>
+          <span className="text-white text-lg">${item.price}</span>
         </td>
         <td>
           <span className="text-white text-lg">{item.quantity}</span>
