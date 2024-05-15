@@ -91,10 +91,10 @@ const AllFoods = () => {
             {
                 pages.map(page=>{
                     if(page === currentPage){
-                        return <button key={page} onClick={()=> setCurrentPage(page)} className="join-item btn bg-[black] text-white">{page}</button>
+                        return <button key={page} onClick={()=> setCurrentPage(page)} className="join-item btn bg-[black] text-white">{page+1}</button>
                     }
                     else{
-                        return <button key={page} onClick={()=> setCurrentPage(page)} className="join-item btn">{page}</button>
+                        return <button key={page} onClick={()=> setCurrentPage(page)} className="join-item btn">{page+1}</button>
                     }
                 })
             }

@@ -36,7 +36,7 @@ const Navbar = () => {
       </div>: userLoggedIn?  <div className='flex items-center relative'> <div className="dropdown">
     <img tabIndex={0} className="w-[48px] h-[48px] border-2 border-white rounded-full object-cover hover:opacity-75" src={`${userLoggedIn.photoURL}`} role='button'/>
       <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[10] p-2 shadow bg-black rounded-box w-52 right-[0px]">
-      <li><NavLink className={({isActive})=> isActive? 'underline font-semibold' : 'font-semibold hover:bg-transparent hover:underline active:bg-transparent'} to='/myFoodItems'>My added food itms</NavLink></li> 
+      <li><NavLink className={({isActive})=> isActive? 'underline font-semibold' : 'font-semibold hover:bg-transparent hover:underline active:bg-transparent'} to='/myFoodItems'>My added food items</NavLink></li> 
         <li><NavLink className={({isActive})=> isActive? 'underline font-semibold' : 'font-semibold hover:bg-transparent hover:underline active:bg-transparent'} to='/addFoodItem'>Add a food item</NavLink></li>
         <li><NavLink className={({isActive})=> isActive? 'underline font-semibold' : 'font-semibold hover:bg-transparent hover:underline active:bg-transparent'} to={`/myPurchases/${userLoggedIn.email}`}>My ordered food items</NavLink></li>
       </ul>
@@ -75,7 +75,7 @@ const Navbar = () => {
     {loadingSpinner? <Lottie animationData={profileLoading} loop={true} className="w-[50px]"/> : userLoggedIn? <div className='flex items-center relative'> <div className="dropdown">
     <img tabIndex={0} className="w-[48px] h-[48px] border-2 border-white rounded-full object-cover hover:opacity-75" src={`${userLoggedIn.photoURL}`} role='button'/>
       <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[10] p-2 shadow bg-black rounded-box w-52 right-[0px]">
-      <li><NavLink className={({isActive})=> isActive? 'underline font-semibold' : 'font-semibold hover:bg-transparent hover:underline active:bg-transparent'} to='/myFoodItems'>My added food itms</NavLink></li> 
+      <li><NavLink className={({isActive})=> isActive? 'underline font-semibold' : 'font-semibold hover:bg-transparent hover:underline active:bg-transparent'} to='/myFoodItems'>My added food items</NavLink></li> 
         <li><NavLink className={({isActive})=> isActive? 'underline font-semibold' : 'font-semibold hover:bg-transparent hover:underline active:bg-transparent'} to='/addFoodItem'>Add a food item</NavLink></li>
         <li><NavLink className={({isActive})=> isActive? 'underline font-semibold' : 'font-semibold hover:bg-transparent hover:underline active:bg-transparent'} to={`/myPurchases/${userLoggedIn.email}`}>My ordered food items</NavLink></li>
         <li className='w-full '>
