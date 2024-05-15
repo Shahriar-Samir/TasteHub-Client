@@ -80,7 +80,7 @@ const UpdateFoodItem = () => {
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text text-white">Price</span>
+            <span className="label-text text-white">Price (USD)</span>
           </label>
           <input type="number" min='1' placeholder="Price" className="input input-bordered bg-transparent border-white placeholder-slate-300" name='price' defaultValue={data.price} required/>
         </div>

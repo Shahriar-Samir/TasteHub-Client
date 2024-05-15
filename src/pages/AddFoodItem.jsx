@@ -80,7 +80,7 @@ const AddFoodItem = () => {
         </div>
         <div className="form-control w-full">
           <label className="label">
-            <span className="label-text text-white">Price</span>
+            <span className="label-text text-white">Price (USD)</span>
           </label>
           <input type="number" min='1' placeholder="Price" className="input input-bordered bg-transparent border-white placeholder-slate-300" name='price' required/>
         </div>
