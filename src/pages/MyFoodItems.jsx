@@ -46,14 +46,14 @@ const MyFoodItems = () => {
            {loading? <div className='h-[100vh] flex justify-center items-center'>
                 <Loading/>
            </div> : <div> <h1 className='mt-20 text-center text-3xl font-bold'>My Food Items</h1>
-            { foodsData ?
-               <div className='h-[60vh]'>
-                <p className='text-md mt-5 font-bold text-center'>You haven't added any food item</p>
-               </div> : <div className='grid  md:grid-cols-2 mx-auto w-11/12 max-w-[1200px] mt-10 gap-10 justify-center'>
+            { foodsData.length > 0 ?
+                <div className='grid  md:grid-cols-2 mx-auto w-11/12 max-w-[1200px] mt-10 gap-10 justify-center'>
                 {foodsData.map((item,index)=>{
                     return <FoodItem key={item._id} index={index}  item={item} deletePurchaseData={deletePurchaseData}/>
                 })}
-            </div> 
+            </div> : <div className='h-[60vh]'>
+                <p className='text-md mt-5 font-bold text-center'>You haven't added any food item</p>
+               </div>
             } </div>}
         </div>
     );

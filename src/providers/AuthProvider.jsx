@@ -26,7 +26,7 @@ const AuthProvider = ({children}) => {
                     axios.post('https://assignment-11-server-alpha-one.vercel.app/logout',userData, {withCredentials:true})
                 }
     })
-    },[])
+    },[user])
 
     const signIn = (email,password)=>{
         setLoadingSpinner(true)
